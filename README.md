@@ -1,7 +1,5 @@
-Hello!!!
+Hello!
 
-Testing. Testing.
+This is the makings of a Mizzou Marketplace website!
 
-Testing testing testing testing testing testing testing testing
-
-TESTIIIIING. AAAAAAAAA. HH. DDH. DO YOU REEEEEAD.
+Currently, it's a work in progress, but we've got some basic Flask stuff set up!
