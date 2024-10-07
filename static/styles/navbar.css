@@ -1,0 +1,21 @@
+.headernav{
+    background-color: black;
+    overflow: hidden;
+}
+
+.headernav a{
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    padding: 20px;
+    font-size: 20px;
+    float: left;
+}
+
+.headernav a:hover{
+    background-color: #F1B82D;
+}
+
+.account{
+    float: right;
+}

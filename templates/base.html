@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/main.css') }}">
     <meta charset="UTF-8">
     <title>{% block title %} {% endblock %} - Mizzou Marketplace</title>
     <!--<style>
@@ -9,9 +10,13 @@
     </style>-->
 </head>
 <body>
-    <nav>
+    <nav class="headernav">
         <a href="{{ url_for('index') }}">Home</a>
         <a href="{{ url_for('about') }}">About</a>
+        <div class="account">
+            <a href="{{ url_for('login') }}">Login</a>
+            <a href ="{{ url_for('register') }}">Register</a>
+        </div>
     </nav>
     <hr>
     <div class="content">
