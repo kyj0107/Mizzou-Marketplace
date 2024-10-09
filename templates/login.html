@@ -4,13 +4,18 @@
 
     <h1>Login</h1>
     <h2>Enter email and password:</h2>
-    <div>
-        <label>Email:</label>
-        <input type="text" name="email">
-    </div>
-    <div>
-        <label>Password:</label>
-        <input type="password" name="password">
-    </div>
+    <form action="{{ url_for('login') }}"method="POST">
+        <div>
+            <label>Email:</label>
+            <input type="text" name="email" id="email">
+        </div>
+        <div>
+            <label>Password:</label>
+            <input type="password" name="password" id="password">
+        </div>
+        <div>
+            <button class="submitbtn">Submit</button>
+        </div>
+    </form>
 
 {% endblock %}
