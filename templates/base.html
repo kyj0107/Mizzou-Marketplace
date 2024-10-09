@@ -4,10 +4,13 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/main.css') }}">
     <meta charset="UTF-8">
     <title>{% block title %} {% endblock %} - Mizzou Marketplace</title>
-    <!--<style>
-        This will probably be where the Mizzou colors and stuff end up.
-        I wonder how we'll go about implementing our design in HTML...
-    </style>-->
+    <style>
+        .item {
+            padding: 10px;
+            margin: 5px;
+            background-color: white
+        }
+    </style>
 </head>
 <body>
     <nav class="headernav">

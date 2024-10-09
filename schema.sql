@@ -1,9 +1,13 @@
---This is where we'll create a template for a database.
+DROP TABLE IF EXISTS items;
 
---Now the question is, what do we put here?
+CREATE TABLE items (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    posted TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    itemName TEXT NOT NULL,
+    itemDescription TEXT NOT NULL
+    poster TEXT NOT NULL
+);
 
---If we're selling furniture, textbooks, and supplies...
-
---An item should have a name, a type (maybe an enum? Maybe we have to specify it in text), a price, the seller's name, maybe whether it's sold? So maybe a Boolean...
-
---I guess we can talk more in detail about it at the next meeting, but...
+-- itemType ENUM('Furniture', 'Textbook', 'Supplies') NOT NULL
+-- condition ENUM('Excellent', 'Good', 'Acceptable', 'Bad', 'Terrible') NOT NULL
+-- price decimal(10,2) NOT NULL

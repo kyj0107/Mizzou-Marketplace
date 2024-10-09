@@ -2,6 +2,13 @@
 
 {% block content %}
 
-    <h1>Hello! Welcome to the Index Page.</h1>
+    <h1>Hello! Have a look at what we have for sale!</h1>
+    {% for item in items %}
+        <div class="item">
+            <p> {{ item['posted'] }}</p>
+            <h2>{{ item['itemName'] }} from {{ item['poster'] }}</h2>
+            <p>{{ item['itemDescription'] }}</p>
+        </div>
+    {% endfor %}
 
 {% endblock %}
