@@ -1,3 +1,4 @@
+import sqlite3
 from flask import Flask, render_template, request, url_for, flash, redirect, abort
 import mysql.connector
 
@@ -6,36 +7,36 @@ app.config["DEBUG"] = True
 app.config['SECRET_KEY'] = 'your secret key'
 app.secret_key = 'your secret key'
 
-mydb = mysql.connector.connect(
-    host="localhost",
-    user="root",
-    password="root",
-    database="mizzou_marketplace"
-)
+# mydb = mysql.connector.connect(
+#     host="localhost",
+#     user="root",
+#     password="root",
+#     database="mizzou_marketplace"
+# )
 
-cursor = mydb.cursor(dictionary=True)
+# cursor = mydb.cursor(dictionary=True)
 
-# def get_db_connection():
+def get_db_connection():
 
-#     conn = sqlite3.connect('database.db')
+    conn = sqlite3.connect('database.db')
 
-#     conn.row_factory = sqlite3.Row
+    conn.row_factory = sqlite3.Row
 
-#     return conn
+    return conn
 
 @app.route('/')
 def index():
 
-    # conn = get_db_connection()
-
-    # query = 'SELECT * FROM items'
-    # items = conn.execute(query).fetchall()
-
-    # conn.close()
+    conn = get_db_connection()
 
     query = 'SELECT * FROM items'
-    cursor.execute(query)
-    items = cursor.fetchall()
+    items = conn.execute(query).fetchall()
+
+    conn.close()
+
+    # query = 'SELECT * FROM items'
+    # cursor.execute(query)
+    # items = cursor.fetchall()
 
     return render_template('index.html', items=items)
 
