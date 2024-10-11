@@ -31,6 +31,11 @@ def about():
     
     return render_template('about.html')
 
+@app.route('/itemEntry/')
+def itemEntry():
+    
+    return render_template('itemEntry.html')
+
 @app.route('/register/')
 def register():
 

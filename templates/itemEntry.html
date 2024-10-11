@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Fill out the deails below to put your item up for sale</h1>
+<form method="post" enctype="multipart/form-data">
+    <div>
+        <label>Item Name</label>
+        <input type="text" name="itemName" id="itemName" required> 
+    </div>
+    <div>
+        <label>Item Description</label>
+        <textarea name="description" id="description" required></textarea>
+    </div>
+    <div>
+        <label>Item Condition</label>
+        <select name="itemCondition" id="itemCondition" required>
+            <option value="" disabled selected>Choose an option that best matches the item's current condition</option>
+            <option value="unused">Unused</option>
+            <option value="likeNew">Like New</option>
+            <option value="fair">Fair</option>
+            <option value="poor">Poor</option>
+        </select>
+    </div>
+    <div>
+        <label>Asking Price</label>
+        <input type="number" name="askingPrice" id="askingPrice" required>
+    </div>
+    <div>
+        <button class="submitbtn">Submit</button>
+    </div>
+</form>
+
+{% endblock %}
