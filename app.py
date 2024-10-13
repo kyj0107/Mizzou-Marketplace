@@ -1,6 +1,6 @@
 import sqlite3
 from flask import Flask, render_template, request, url_for, flash, redirect, abort
-import mysql.connector
+# import mysql.connector
 
 app = Flask(__name__)
 app.config["DEBUG"] = True
