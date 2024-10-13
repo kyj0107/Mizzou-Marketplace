@@ -9,7 +9,6 @@
 .container{
     width: 100%;
     min-height: 100vh;
-    background: #E4F1FA;
     display: flex;
     align-items: center;
     justify-items: center;
