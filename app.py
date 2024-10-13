@@ -50,6 +50,11 @@ def itemEntry():
     
     return render_template('itemEntry.html')
 
+@app.route('/product/') 
+def product():
+    
+    return render_template('product.html')
+
 @app.route('/register/')
 def register():
 

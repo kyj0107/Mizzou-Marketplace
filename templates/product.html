@@ -1,76 +1,71 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product Page</title>
-    <link rel="stylesheet" href="product.css"> 
-</head>
-<body>
- <div class="container">
-    <div class="product">
-        <div class="gallery">
-            <img src="Images/apple-1835805_1280.jpg" alt="Macbook Air" id="productImg">
-            <div class="controls">
-                <span class="btn"></span>
-                <span class="btn"></span>
-                <span class="btn"></span>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Product Page</title>
+        <link rel="stylesheet" href="{{ url_for ('static', filename='styles/product.css')}} ">
+    </head>
+
+    <body>
+        <div class="container">
+            <div class="product">
+                <div class="gallery">
+                    <img src="{{ url_for('static', filename='Images/apple-1835805_1280.jpg') }}" alt="Macbook Air" id="productImg">
+                    <div class="controls">
+                        <span class="btn"></span>
+                        <span class="btn"></span>
+                        <span class="btn"></span>
+                    </div>
+                </div>
+                <div class="details">
+                    <h1>Apple MacBook Air</h1>
+                    <h2>$500</h2>
+                    <p>This is a used 2016 MacBook Air; it's been well taken care of and is in good condition.</p>
+                    <form>
+                        <div class="size-select">
+                            <p>Condition</p>
+                            <label for="Excellent">
+                                <input type="radio" name="condition" id="Excellent">
+                                <span>Excellent</span>
+                            </label>
+                            <label for="Good">
+                                <input type="radio" name="condition" id="Good">
+                                <span>Good</span>
+                            </label>
+                            <label for="Fair">
+                                <input type="radio" name="condition" id="Fair">
+                                <span>Fair</span>
+                            </label>
+                        </div>
+                        <div class="quantity-select">
+                            <p>Quantity</p>
+                            <input type="number" value="1">
+                        </div>
+                        <button>Buy Now</button>
+                    </form>    
+                </div>
             </div>
         </div>
-        <div class="details">
-            <h1>Apple MacBook Air</h1>
-            <h2>$500</h2>
-            <p>This is an used 2016 MacBook Air, it's been well taken care of 
-                and in good condition.</p>
-            <form>
-                <div class="size-select">
-                    <p>Condition</p>
-                    <label for="Excellent">
-                        <input type="radio" name="condition" id="Excellent">
-                        <span>Excellent</span>
-                    </label>
-                    <label for="Good">
-                        <input type="radio" name="condition" id="Good">
-                        <span>Good</span>
-                    </label>
-                    <label for="Fair">
-                        <input type="radio" name="condition" id="Fair">
-                        <span>Fair</span>
-                    </label>
-                </div>
-                <div class="quantity-select">
-                    <p>Quantity</p>
-                    <input type="number" value="1">
-                </div>
-                <button>Buy Now</button>
-            </form>    
-        </div>
-        
-    </div>
 
- </div> 
+        <script>
+            let productImg = document.getElementById("productImg");
+            let btn = document.getElementsByClassName("btn");
 
-<script>
+            btn[0].onclick = function(){
+                productImg.src = "{{ url_for('static', filename='Images/apple-1835805_1280.jpg') }}";
+            }
 
-    let productImg = document.getElementById("productImg");
-    let btn = document.getElementsByClassName("btn");
+            btn[1].onclick = function(){
+                productImg.src = "{{ url_for('static', filename='Images/laptop-3912759_1280.jpg') }}";
+            }   
 
-    btn[0].onclick = function(){
-        productImg.src = "Images/apple-1835805_1280.jpg";
-    }
+            btn[2].onclick = function(){
+                productImg.src = "{{ url_for('static', filename='Images/macbook-5032167_1280.jpg') }}";
+            }
+        </script>
+    </body>
 
-    btn[1].onclick = function(){
-        productImg.src = "Images/laptop-3912759_1280.jpg";
-    }   
-
-    btn[2].onclick = function(){
-        productImg.src = "Images/macbook-5032167_1280.jpg";
-    }
-
-</script>
-
-</body>
 
 {% endblock %}
-
