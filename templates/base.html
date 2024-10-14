@@ -18,6 +18,11 @@
         <a href="{{ url_for('about') }}">About</a>
         <a href="{{ url_for('itemEntry') }}">Post an Item</a>
         <a href ="{{ url_for ('product') }}">Products</a>
+        <div id="munavbarlink">
+            <a href="{{ url_for('go_mu_homepage') }}">
+                <img src="/static/Images/MU_UniversitySignature_rgb_rev_horiz.png" id="mulogo">
+            </a>
+        </div>
         <div class="account">
             <a href="{{ url_for('login') }}">Login</a>
             <a href ="{{ url_for('register') }}">Register</a>
@@ -31,6 +36,14 @@
         {% endfor %}
 
         {% block content %} {% endblock %}
+    </div>
+    <div class="footer">
+        <img src="/static/Images/Mizzou-Pendant-3.png" id="mupendant">
+        <div class="footeritems">
+            <a href="{{ url_for('index') }}">Home</a>
+            <a href="{{ url_for('login') }}">Login</a>
+            <a href="{{ url_for('faq') }}">FAQ</a>
+        </div>
     </div>
 </body>
 </html>

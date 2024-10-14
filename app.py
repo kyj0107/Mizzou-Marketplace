@@ -74,5 +74,12 @@ def login():
 
     return render_template('login.html')
 
+@app.route('/go_mu_homepage/')
+def go_mu_homepage():
+    return redirect("https://missouri.edu/", code=302)
+
+@app.route('/faq/')
+def faq():
+    return render_template('faq.html')
 
 app.run(port=5002, debug=True)
