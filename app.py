@@ -55,10 +55,23 @@ def product():
     
     return render_template('product.html')
 
-@app.route('/register/')
+@app.route('/register/', methods=['GET', 'POST'])
 def register():
 
+    if request.method =='POST':
+        firstName = request.form['firstName']
+        lastName = request.form['lastName']
+        email = request.form['email']
+        password = request.form['password']
+
+        if not email.endswith('@umsystem.edu'): #checks if user's email ends in umsystem.edu **Not Working
+            flash('You must use an email assciated with the University')
+            return redirect(url_for('register'))
+        
+        else:
+            flash('Registered Successfully!')
     return render_template('register.html')
+        
 
 @app.route('/login/', methods=['GET', 'POST'])
 def login():
