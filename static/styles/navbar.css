@@ -12,19 +12,6 @@
     float: left;
 }
 
-.headernav a:hover{
-    background-color: #F1B82D;
-}
-
 .account{
     float: right;
-}
-#munavbarlink{
-    text-align: center;
-    text-decoration: none;
-    font-size: 20px;
-    float: left;
-    width: 210px;
-    height: 43px;
-    padding-left: 400px;
 }

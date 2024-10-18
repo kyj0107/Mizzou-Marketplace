@@ -1,3 +1,10 @@
 @import url('navbar.css');
 @import url('footer.css');
 @import url('images.css');
+
+html, body{
+    margin: 0;
+}
+.content{
+    flex: 1;
+}

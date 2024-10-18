@@ -14,18 +14,15 @@
 </head>
 <body>
     <nav class="headernav">
-        <a href="{{ url_for('index') }}">Home</a>
-        <a href="{{ url_for('about') }}">About</a>
-        <a href="{{ url_for('itemEntry') }}">Post an Item</a>
-        <a href ="{{ url_for ('product') }}">Products</a>
-        <div id="munavbarlink">
-            <a href="{{ url_for('go_mu_homepage') }}">
-                <img src="/static/Images/MU_UniversitySignature_rgb_rev_horiz.png" id="mulogo">
-            </a>
+        <div>
+            <a href="{{ url_for('index') }}"><img id="websitelogo"src="/static/Images/logo.png"></a>
+            <a href="{{ url_for('about') }}"><img id="websitelogo"src="/static/Images/brushabout.png"></a>
+            <a href="{{ url_for('itemEntry') }}"><img id="websitelogo"src="/static/Images/brushpostanitem.png"></a>
+            <a href ="{{ url_for ('product') }}"><img id="websitelogo"src="/static/Images/brushproducts.png"></a>
         </div>
         <div class="account">
-            <a href="{{ url_for('login') }}">Login</a>
-            <a href ="{{ url_for('register') }}">Register</a>
+            <a href="{{ url_for('login') }}"><img id="websitelogo"src="/static/Images/brushlogin.png"></a>
+            <a href ="{{ url_for('register') }}"><img id="websitelogo"src="/static/Images/brushregister.png"></a>
 
         </div>
     </nav>
@@ -38,7 +35,14 @@
         {% block content %} {% endblock %}
     </div>
     <div class="footer">
-        <img src="/static/Images/Mizzou-Pendant-3.png" id="mupendant">
+        <div id="footerimage">
+            <img src="/static/Images/Columns.png" id="mucolumns">
+        </div>
+        <div id="munavbarlink">
+            <a href="{{ url_for('go_mu_homepage') }}">
+                <img src="/static/Images/MU_UniversitySignature_rgb_std_horiz.png" id="mulogo">
+            </a>
+        </div>
         <div class="footeritems">
             <a href="{{ url_for('index') }}">Home</a>
             <a href="{{ url_for('login') }}">Login</a>

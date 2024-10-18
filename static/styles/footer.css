@@ -1,16 +1,41 @@
 .footer{
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
+    display: flex;
     background-color: #F1B82D;
     color: black;
-    text-align: left;
-    font-size: x-large;
-    text-decoration: none;
-    overflow: hidden;
+    padding: 20px;
+    justify-content: space-between;
+    border-top: 1px solid black;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
 }
 .footeritems{
-    text-decoration: none;
     font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding-right: 200px;
+}
+#footerimage{
+    width: 125%;
+    height: 125%;
+}
+.footeritems a{
+    text-decoration: none;
+    padding: 20px;
+    margin: 0 15px;
+    margin-left: 40px;
+}
+.footeritems a:hover{
+    text-decoration: none;
+}
+.footeritems a:visited{
+    color: black;
+}
+#munavbarlink{
+    padding-right: 200px;
+    width: 25%;
+    height: 25%;
 }
