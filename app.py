@@ -64,12 +64,13 @@ def register():
         email = request.form['email']
         password = request.form['password']
 
-        if not email.endswith('@umsystem.edu'): #checks if user's email ends in umsystem.edu **Not Working
+        if not email.endswith('@umsystem.edu'): #checks if user's email ends in umsystem.edu. If not, clears fields and asks for an email associated w/ university. If true, redirects to index page
             flash('You must use an email assciated with the University')
             return redirect(url_for('register'))
         
         else:
             flash('Registered Successfully!')
+            return redirect(url_for('index'))
     return render_template('register.html')
         
 
@@ -80,7 +81,7 @@ def login():
         email = request.form['email']
         password = request.form['password']
 
-        if email == 'admin' and password == 'admin':
+        if email == 'admin' and password == 'admin': #Block will be used to verify email/pass w/ database, for now redirects to index if email/pass are 'admin' 
             return redirect(url_for('index'))
         else:
             flash('Invalid Email or Password')
