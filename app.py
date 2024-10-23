@@ -79,6 +79,7 @@ def register():
         lastName = request.form['lastName']
         email = request.form['email']
         password = request.form['password']
+        passwordConfirm = request.form['passwordConfirm']
 
         if not email.endswith('@umsystem.edu'): #checks if user email ends in umsystem.edu. If not, clears fields and asks for an email associated w/ university. If true, redirects to index page
             flash('You must use an email associated with the University')
@@ -87,6 +88,10 @@ def register():
         validPassword, errorMessage = passwordCheck(password) #checks if password meets minimum requirements, if not rejects with message detailing what's missing
         if not validPassword:
             flash(errorMessage)
+            return redirect(url_for('register'))
+        
+        if password != passwordConfirm: #checks if passwords match
+            flash('Passwords must match!')
             return redirect(url_for('register'))
         
         else:
