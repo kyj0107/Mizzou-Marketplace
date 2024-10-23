@@ -21,7 +21,7 @@
 
 .gallery {
     flex-basis: 47%;
-    background: #1c5e90;
+    background: black;
     margin-right: 3%;
     display: flex;
     justify-content: center;
@@ -73,7 +73,7 @@
 }
 
 .size-select input:checked + span {
-    color: #1c5e90;
+    color: black;
     font-weight: 600;
 }
 
@@ -106,7 +106,7 @@
 }
 
 form button {
-    background: #1c5e90;
+    background: black;
     color: #E4F1FA;
     font-size: 17px;
     width: 100%;

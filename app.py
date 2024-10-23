@@ -64,8 +64,8 @@ def register():
         email = request.form['email']
         password = request.form['password']
 
-        if not email.endswith('@umsystem.edu'): #checks if user's email ends in umsystem.edu. If not, clears fields and asks for an email associated w/ university. If true, redirects to index page
-            flash('You must use an email assciated with the University')
+        if not email.endswith('@umsystem.edu'):                                                   #checks if user's email ends in umsystem.edu. If not, clears fields and asks for an email associated w/ university. If true, redirects to index page
+            flash('You must use an email associated with the University')
             return redirect(url_for('register'))
         
         else:

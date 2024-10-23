@@ -13,6 +13,8 @@
         <div class="product">
             <div class="gallery">
                 <img src="{{ url_for('static', filename='/Images/apple-1835805_1280.jpg') }}" id="productImg" alt="Apple MacBook Air Image">
+                <div>
+                </div>
                 <div class="controls">
                     <span class="btn" data-img="{{ url_for('static', filename='/Images/apple-1835805_1280.jpg') }}"></span>
                     <span class="btn" data-img="{{ url_for('static', filename='/Images/laptop-3912759_1280.jpg') }}"></span>
@@ -24,26 +26,12 @@
                 <h2>$500</h2>
                 <p>This is a used 2016 MacBook Air; it's been well taken care of and is in good condition.</p>
                 <form>
-                    <div class="size-select">
-                        <p>Condition:  <br> </br></p>
-                        <label>
-                            <input type="radio" name="condition" value="Excellent">
-                            <span>Excellent</span>
-                        </label>
-                        <label>
-                            <input type="radio" name="condition" value="Good">
-                            <span>Good</span>
-                        </label>
-                        <label>
-                            <input type="radio" name="condition" value="Fair">
-                            <span>Fair</span>
-                        </label>
+                    <div>
+                        <label>Condition: Good</label>
                     </div>
-                    <div class="quantity-select">
-                        <p>Quantity:  <br> </br></p>
-                        <input type="number" value="1" min="1" max="1">
+                    <div>
                     </div>
-                    <button type="button">Buy Now</button>
+                    <button type="button">Contact Seller</button>
                 </form>
             </div>
         </div>
