@@ -1,0 +1,15 @@
+.card{
+    width: 400px;
+    margin-left: 10px;
+    padding-left: 10px;
+}
+.card-link{
+    text-decoration: none;
+    color: black;
+}
+.card-btn{
+    background-color: #F1B82D;
+    border: solid 1px;
+    border-radius: 8px;
+    border-color: black;
+}
