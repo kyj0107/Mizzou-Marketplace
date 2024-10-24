@@ -1,5 +1,6 @@
 import sqlite3
-from flask import Flask, render_template, request, url_for, flash, redirect, abort
+import re
+from flask import Flask, render_template, request, url_for, flash, redirect, abort, get_flashed_messages
 # import mysql.connector
 
 app = Flask(__name__)
@@ -55,22 +56,48 @@ def product():
     
     return render_template('product.html')
 
+def passwordCheck(password): #function to enforce password requirements
+    if not re.search(r"[A-Z]", password):
+        return False, "Password missing an uppercase letter"
+    if not re.search(r"[a-z]", password):
+        return False, "Password missing a lowercase letter"
+    if not re.search(r"[0-9]", password):
+        return False, "Password missing a number"
+    if not re.search(r"[$#@'&()*+,-./:;<=>|?!@^_'{}~]", password):
+        return False, "Password missing a symbol"
+    
+    return True, ""
+
+
 @app.route('/register/', methods=['GET', 'POST'])
 def register():
 
     if request.method =='POST':
+        get_flashed_messages() #clears any flashed messages from previous attempts
+
         firstName = request.form['firstName']
         lastName = request.form['lastName']
         email = request.form['email']
         password = request.form['password']
+        passwordConfirm = request.form['passwordConfirm']
 
-        if not email.endswith('@umsystem.edu'):                                                   #checks if user's email ends in umsystem.edu. If not, clears fields and asks for an email associated w/ university. If true, redirects to index page
+        if not email.endswith('@umsystem.edu'): #checks if user email ends in umsystem.edu. If not, clears fields and asks for an email associated w/ university. If true, redirects to index page
             flash('You must use an email associated with the University')
+            return redirect(url_for('register'))
+        
+        validPassword, errorMessage = passwordCheck(password) #checks if password meets minimum requirements, if not rejects with message detailing what's missing
+        if not validPassword:
+            flash(errorMessage)
+            return redirect(url_for('register'))
+        
+        if password != passwordConfirm: #checks if passwords match
+            flash('Passwords must match!')
             return redirect(url_for('register'))
         
         else:
             flash('Registered Successfully!')
             return redirect(url_for('index'))
+
     return render_template('register.html')
         
 
