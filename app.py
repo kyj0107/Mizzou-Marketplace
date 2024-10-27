@@ -12,6 +12,7 @@ app.secret_key = 'your secret key'
 #     host="localhost",
 #     user="root",
 #     password="root",
+#     port="6603"
 #     database="mizzou_marketplace"
 # )
 
