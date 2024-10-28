@@ -1,6 +1,8 @@
-body {
+.contanier {
     background: #f3f3f3;
     flex-direction: column;
+    justify-content: center; /* Center items vertically */
+    display: flex;
     margin: 0;
 }
 
@@ -23,6 +25,7 @@ form {
     transition: transform 0.2s; 
     width: 500px; 
     text-align: center; 
+    flex-grow: 1;
 }
 
 label {
@@ -36,14 +39,14 @@ label {
 }
 
 input {
-    display: block;
+    display: block; 
     width: 100%;
     margin-bottom: 15px;
     padding: 10px;
     box-sizing: border-box; /* Include padding in width */
     border: 1px solid #7d7d7d; /* Light border */
     border-radius: 5px; /* Rounded corners */
-    text-align: center;
+    
 }
 
 button {
@@ -64,25 +67,9 @@ button:hover{
 }
 
 p {
-    margin-top: 15px; 
+    margin-top: 20px; 
 }
 
 a {
     color: #7d7d7d; 
 }
-
-
-
-
-
-
-
-/* 
-.submitbtn{
-    width: 10%;
-    cursor: pointer;  
-} 
- 
-.submitbtn:hover{
-    background-color: #F1B82D;
-} */

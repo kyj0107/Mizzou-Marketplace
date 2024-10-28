@@ -9,17 +9,14 @@
     <h1>Login</h1>
     <h2>Enter your email and password:</h2>
     <form action="{{ url_for('login') }}" method="POST">
-        <div>
+        <div class="container">
             <label for="email">Email:</label>
             <input type="text" name="email" id="email" required>
-        </div>
-        <div>
+
             <label for="password">Password:</label>
             <input type="password" name="password" id="password" required>
         </div>
-        <div>
             <button type="submit">Submit</button>
-        </div>
     </form>
     <p>Don't have an account yet? <a href="{{ url_for('register') }}">Create an account</a></p>
 </body>
