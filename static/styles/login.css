@@ -1,11 +1,3 @@
-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh; /* Center vertically */
-    margin: 0;
-    background-color: #f3f3f3;
-}
 
 form {
     background-color: #fff;
@@ -15,7 +7,8 @@ form {
     transition: transform 0.2s;
     width: 500px;
     text-align: center;
-    margin: 10px auto; /* Centers the form horizontally */
+    margin-top: 10%;
+    margin: 20px auto; /* Centers the form horizontally */
 }
 
 h1 {
@@ -68,8 +61,10 @@ button:hover {
 
 p {
     margin-top: 20px;
+    text-align: center;
 }
 
 a {
     color: #7d7d7d;
+    text-align: center;
 }
