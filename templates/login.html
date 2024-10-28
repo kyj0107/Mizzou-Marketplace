@@ -2,7 +2,7 @@
 
 {% block content %}
 <head>
-    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/login.css') }}">
 </head>
 
 <body>
@@ -17,11 +17,11 @@
             <input type="password" id="password" name="password" placeholder="Enter your Password" required>
             
             <div class="wrap">
-                <button type="submit">Submit</button>
+                <button type="submit" class="submitbtn">Submit</button>
             </div>
         </form>
         
-        <p>Don't have an account yet?
+        <p>Not registered?
             <a href="{{ url_for('register') }}" style="text-decoration: none;">
                 Create an account
             </a>
