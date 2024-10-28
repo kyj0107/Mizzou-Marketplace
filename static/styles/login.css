@@ -5,22 +5,24 @@ body {
 }
 
 h1 {
-    color: #4CAF50; /* Green color for the heading */
-    margin: 20px 0; /* Spacing above and below */
+    color: #000; /* Green color for the heading */
+    margin: 20px 0; 
+    text-align: center;
 }
 
 h2 {
-    color: #333; /* Dark gray for the subtitle */
+    color: #7d7d7d; /* Dark gray for the subtitle */
+    text-align: center;
 }
 
 form {
     background-color: #fff;
     border-radius: 15px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-    padding: 20px; /* More padding for the form */
-    transition: transform 0.2s; /* Animation on hover */
-    width: 500px; /* Set fixed width */
-    text-align: center; /* Center align text */
+    padding: 20px; 
+    transition: transform 0.2s; 
+    width: 500px; 
+    text-align: center; 
 }
 
 label {
@@ -29,8 +31,8 @@ label {
     margin-top: 10px;
     margin-bottom: 5px;
     text-align: left;
-    color: #555; /* Dark gray for labels */
-    font-weight: bold; /* Bold labels */
+    color: #8F8884; 
+    font-weight: bold; 
 }
 
 input {
@@ -39,7 +41,7 @@ input {
     margin-bottom: 15px;
     padding: 10px;
     box-sizing: border-box; /* Include padding in width */
-    border: 1px solid #ddd; /* Light border */
+    border: 1px solid #ffff; /* Light border */
     border-radius: 5px; /* Rounded corners */
 }
 
@@ -48,20 +50,24 @@ button {
     border-radius: 10px;
     margin-top: 15px;
     margin-bottom: 15px;
-    border: none; /* No border */
-    color: white; /* White text */
-    cursor: pointer; /* Pointer cursor on hover */
-    background-color: #4CAF50; /* Green button */
-    width: 100%; /* Full width */
-    font-size: 16px; /* Font size */
+    border: none; 
+    color: white; 
+    cursor: pointer; 
+    
+    background-color: #F1B82D; 
+    width: 10%; 
+    font-size: 16px; 
+}
+button:hover{
+    background-color: #000000;
 }
 
 p {
-    margin-top: 15px; /* Spacing above paragraph */
+    margin-top: 15px; 
 }
 
 a {
-    color: #4CAF50; /* Green link color */
+    color: #7d7d7d; 
 }
 
 
