@@ -4,23 +4,24 @@
 <head>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/login.css') }}">
 </head>
+
 <h1>Login</h1>
 <h2>Enter your email and password:</h2>
+
 <form action="{{ url_for('login') }}" method="POST">
-<body>
-        <div>
-            <label for="email">Email:</label>
-            <input type="text" name="email" id="email" required>
-        </div>
-        <div> 
-            <label for="password">Password:</label>
-            <input type="password" name="password" id="password" required>
-        </div>
-        <div>
-            <button type="submit">Submit</button>
-        </div>
-    </form>
-    <p>Don't have an account yet? <a href="{{ url_for('register') }}">Create an account</a></p>
-</body>
+    <div>
+        <label for="email">Email:</label>
+        <input type="text" name="email" id="email" required>
+    </div>
+    <div>
+        <label for="password">Password:</label>
+        <input type="password" name="password" id="password" required>
+    </div>
+    <div>
+        <button type="submit">Submit</button>
+    </div>
+</form>
+
+<p>Don't have an account yet? <a href="{{ url_for('register') }}">Create an account</a></p>
 
 {% endblock %}

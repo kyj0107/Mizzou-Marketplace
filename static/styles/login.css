@@ -1,4 +1,4 @@
-body{
+form{
     background: #f3f3f3;
     display: flex;          
     flex-direction: column; 
@@ -12,7 +12,7 @@ body{
 
 
 h1 {
-    color: #000; /* Green color for the heading */
+    color: #000;
     margin: 20px 0; 
     text-align: center;
 }
