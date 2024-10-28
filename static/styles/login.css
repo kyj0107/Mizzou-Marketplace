@@ -1,35 +1,32 @@
-form{
-    background: #f3f3f3;
-    display: flex;          
-    flex-direction: column; 
-    justify-content: center; 
-    align-items: center;    
-    margin: 10px 0;        
-    width: 100%;           
-    padding: 10px;        
-    border-radius: 5px;  
-}
-
-
-h1 {
-    color: #000;
-    margin: 20px 0; 
-    text-align: center;
-}
-
-h2 {
-    color: #7d7d7d; /* Dark gray for the subtitle */
-    text-align: center;
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Center vertically */
+    margin: 0;
+    background-color: #f3f3f3;
 }
 
 form {
     background-color: #fff;
     border-radius: 15px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-    padding: 20px; 
-    transition: transform 0.2s; 
-    width: 500px; 
-    text-align: center; 
+    padding: 20px;
+    transition: transform 0.2s;
+    width: 500px;
+    text-align: center;
+    margin: 10px auto; /* Centers the form horizontally */
+}
+
+h1 {
+    color: #000;
+    margin: 20px 0;
+    text-align: center;
+}
+
+h2 {
+    color: #7d7d7d;
+    text-align: center;
 }
 
 label {
@@ -38,19 +35,18 @@ label {
     margin-top: 10px;
     margin-bottom: 5px;
     text-align: left;
-    color: #8F8884; 
-    font-weight: bold; 
+    color: #8F8884;
+    font-weight: bold;
 }
 
 input {
-    display: block; 
+    display: block;
     width: 100%;
     margin-bottom: 15px;
     padding: 10px;
-    box-sizing: border-box; /* Include padding in width */
-    border: 1px solid #7d7d7d; /* Light border */
-    border-radius: 5px; /* Rounded corners */
-    
+    box-sizing: border-box;
+    border: 1px solid #7d7d7d;
+    border-radius: 5px;
 }
 
 button {
@@ -58,22 +54,22 @@ button {
     border-radius: 10px;
     margin-top: 15px;
     margin-bottom: 15px;
-    border: none; 
-    color: white; 
-    cursor: pointer; 
-    
-    background-color: #F1B82D; 
-    width: 100%; 
-    font-size: 16px; 
+    border: none;
+    color: white;
+    cursor: pointer;
+    background-color: #F1B82D;
+    width: 100%;
+    font-size: 16px;
 }
-button:hover{
+
+button:hover {
     background-color: #000000;
 }
 
 p {
-    margin-top: 20px; 
+    margin-top: 20px;
 }
 
 a {
-    color: #7d7d7d; 
+    color: #7d7d7d;
 }
