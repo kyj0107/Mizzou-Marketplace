@@ -2,6 +2,7 @@
     background: #f3f3f3;
     flex-direction: column;
     justify-content: center; /* Center items vertically */
+    align-items: center;
     display: flex;
     margin: 0;
 }
