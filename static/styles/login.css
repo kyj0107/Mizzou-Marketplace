@@ -1,3 +1,74 @@
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: sans-serif;
+    line-height: 1.5;
+    min-height: 100vh;
+    background: #f3f3f3;
+    flex-direction: column;
+    margin: 0;
+}
+
+h1 {
+    color: #4CAF50; /* Green color for the heading */
+    margin: 20px 0; /* Spacing above and below */
+}
+
+h2 {
+    color: #333; /* Dark gray for the subtitle */
+}
+
+form {
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    padding: 20px; /* More padding for the form */
+    transition: transform 0.2s; /* Animation on hover */
+    width: 500px; /* Set fixed width */
+    text-align: center; /* Center align text */
+}
+
+label {
+    display: block;
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    text-align: left;
+    color: #555; /* Dark gray for labels */
+    font-weight: bold; /* Bold labels */
+}
+
+input {
+    display: block;
+    width: 100%;
+    margin-bottom: 15px;
+    padding: 10px;
+    box-sizing: border-box; /* Include padding in width */
+    border: 1px solid #ddd; /* Light border */
+    border-radius: 5px; /* Rounded corners */
+}
+
+button {
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    border: none; /* No border */
+    color: white; /* White text */
+    cursor: pointer; /* Pointer cursor on hover */
+    background-color: #4CAF50; /* Green button */
+    width: 100%; /* Full width */
+    font-size: 16px; /* Font size */
+}
+
+p {
+    margin-top: 15px; /* Spacing above paragraph */
+}
+
+a {
+    color: #4CAF50; /* Green link color */
+}
 
 
 
@@ -5,7 +76,7 @@
 
 
 
-
+/* 
 .submitbtn{
     width: 10%;
     cursor: pointer;  
@@ -13,4 +84,4 @@
  
 .submitbtn:hover{
     background-color: #F1B82D;
-}
+} */
