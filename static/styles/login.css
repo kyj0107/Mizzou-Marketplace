@@ -1,9 +1,18 @@
-.contanier {
+.email{
     background: #f3f3f3;
     flex-direction: column;
     justify-content: center; /* Center items vertically */
-    align-items: center;
     display: flex;
+    align-items: center;
+    margin: 0;
+}
+
+.password{
+    background: #f3f3f3;
+    flex-direction: column;
+    justify-content: center; /* Center items vertically */
+    display: flex;
+    align-items: center;
     margin: 0;
 }
 
