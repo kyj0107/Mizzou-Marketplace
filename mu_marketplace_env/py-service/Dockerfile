@@ -5,5 +5,5 @@ COPY requirements.txt ./
 RUN apt-get -y update && apt-get install -y nano
 RUN pip install --no-cache-dir -r requirements.txt
 USER app_user
-COPY app ./
+COPY . .
 CMD ["bash"]
