@@ -17,12 +17,11 @@ try:
         port="6603",
         database="mizzou_marketplace"
     )
-    print("IT'S ALIIIIIIIIVE!")
+    print("Connection was successful!")
 
 except Exception as err:
 
-    print("Whoops. Something went wrong. Check the message.")
-    print(err)
+    print(f"Connection failed. {err}")
 
 cursor = mydb.cursor(dictionary=True)
 
@@ -46,10 +45,6 @@ def index():
     # items = conn.execute(query).fetchall()
 
     # conn.close()
-
-    # query = 'SELECT * FROM items'
-    # cursor.execute(query)
-    # items = cursor.fetchall()
 
     return render_template('index.html', items=items)
 
@@ -107,8 +102,15 @@ def register():
             return redirect(url_for('register'))
         
         else:
-            flash('Registered Successfully!')
-            return redirect(url_for('index'))
+            query = f"INSERT INTO users (firstName, lastName, email, password) VALUES ('{firstName}', '{lastName}', '{email}', '{password}')"
+            try:
+                cursor.execute(query)
+                mydb.commit()
+                flash('Registered Successfully!')
+                return redirect(url_for('index'))
+            except:
+                flash('Whoops! Something went wrong.')
+                return redirect(url_for('index'))
 
     return render_template('register.html')
         
@@ -119,11 +121,16 @@ def login():
     if request.method =='POST': 
         email = request.form['email']
         password = request.form['password']
-
+        query = f"SELECT email, password FROM users WHERE email = '{email}' AND password = '{password}'"
+        cursor.execute(query)
+        result = cursor.fetchall()
         if email == 'admin' and password == 'admin': #Block will be used to verify email/pass w/ database, for now redirects to index if email/pass are 'admin' 
             return redirect(url_for('index'))
-        else:
+        elif len(result) == 0:
             flash('Invalid Email or Password')
+        else:
+            flash('Logged in successfully!')
+            return redirect(url_for('index'))
 
     return render_template('login.html')
 
