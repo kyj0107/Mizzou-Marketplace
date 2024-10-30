@@ -1,40 +1,51 @@
-import sqlite3
+# import sqlite3
 import re
 from flask import Flask, render_template, request, url_for, flash, redirect, abort, get_flashed_messages
-# import mysql.connector
+import mysql.connector
 
 app = Flask(__name__)
 app.config["DEBUG"] = True
 app.config['SECRET_KEY'] = 'your secret key'
 app.secret_key = 'your secret key'
 
-# mydb = mysql.connector.connect(
-#     host="localhost",
-#     user="root",
-#     password="root",
-#     port="6603"
-#     database="mizzou_marketplace"
-# )
+try:
 
-# cursor = mydb.cursor(dictionary=True)
+    mydb = mysql.connector.connect(
+        host="localhost",
+        user="root",
+        password="root",
+        port="6603",
+        database="mizzou_marketplace"
+    )
+    print("IT'S ALIIIIIIIIVE!")
 
-def get_db_connection():
+except Exception as err:
 
-    conn = sqlite3.connect('database.db')
+    print("Whoops. Something went wrong. Check the message.")
+    print(err)
 
-    conn.row_factory = sqlite3.Row
+cursor = mydb.cursor(dictionary=True)
 
-    return conn
+# def get_db_connection():
+
+#     conn = sqlite3.connect('database.db')
+
+#     conn.row_factory = sqlite3.Row
+
+#     return conn
 
 @app.route('/')
 def index():
 
-    conn = get_db_connection()
+    # conn = get_db_connection()
 
     query = 'SELECT * FROM items'
-    items = conn.execute(query).fetchall()
+    cursor.execute(query)
+    items = cursor.fetchall()
 
-    conn.close()
+    # items = conn.execute(query).fetchall()
+
+    # conn.close()
 
     # query = 'SELECT * FROM items'
     # cursor.execute(query)
