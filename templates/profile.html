@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Your Profile</h1>
+<h2>Please sign in with Mizzou credentials:</h2>
+
+
+<div>
+    <label>First Name:</label>
+</div>
+<div>
+    <label>Last Name:</label>
+</div>
+<div>
+    <label>Email:</label>
+</div>
+<div>
+    <button type="submit">Update Profile</button> 
+</div>
+
+<form>
+    <div>
+        <button type="submit">Log Out</button> 
+    </div>
+</form>
+
+<!-- THIS IS PLACEHOLDER!! Plans for this page are to pull and display profile info for currently signed in users, and allow them to update info like password by using the 'update profile' button to refdirect to a form for that. Lastly they can sign out using the button at the bottom.-->
+
+{% endblock %}
