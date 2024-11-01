@@ -6,7 +6,7 @@
 </head>
 
 <h1>Register</h1>
-<h2>To create an account, please enter the following:</h2>
+<h2>Please complete the following to create an account:</h2>
 <form action="{{ url_for('register') }}" method="post">
     <div>
         <label for="firstName">First Name:</label>
@@ -35,5 +35,7 @@
         <button class="submitbtn">Submit</button>
     </div>
 </form>
+
+<p><a href="{{ url_for('login') }}">Already have an account?</a></p> <!-- No class for the paragraph -->
 
 {% endblock %}

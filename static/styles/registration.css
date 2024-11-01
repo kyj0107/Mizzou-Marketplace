@@ -59,15 +59,17 @@ button:hover {
 
 i {
     display: block; /* Ensures the instruction text is on its own line */
-    margin-bottom: 15px; /* Space between the instruction and the next input */
-    font-size: 14px; /* Adjust font size for instruction */
-    color: #BD5C2C; /* Color for instructional text */
+    margin-bottom: 15px; 
+    font-size: 15px; 
+    color: #000000; /* Color for instructional text */
 }
 
 p {
-    margin-top: 20px;
+    margin-top: 20px; /* Space above the paragraph */
     text-align: center;
+    font-size: 16px; /* Adjusts font size for readability */
 }
+
 
 a {
     color: #1C5E90; /* Link color */
