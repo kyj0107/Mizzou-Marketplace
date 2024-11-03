@@ -5,7 +5,7 @@ USE mizzou_marketplace;
 
 DROP TABLE IF EXISTS users;
 CREATE TABLE users (
-    userID INTEGER PRIMARY KEY AUTO_INCREMENT,
+    userID INT AUTO_INCREMENT PRIMARY KEY,
     firstName VARCHAR(50) NOT NULL,
     lastName VARCHAR(50) NOT NULL,
     email VARCHAR(100) NOT NULL,
@@ -14,7 +14,7 @@ CREATE TABLE users (
 
 DROP TABLE IF EXISTS items;
 CREATE TABLE items (
-    itemID INTEGER PRIMARY KEY AUTO_INCREMENT,
+    itemID INT AUTO_INCREMENT PRIMARY KEY,
     posted TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     itemName VARCHAR(40) NOT NULL,
     itemDescription TEXT NOT NULL,
@@ -22,7 +22,8 @@ CREATE TABLE items (
     itemType ENUM('Furniture', 'Textbooks', 'Supplies'),
     price decimal(10,2) NOT NULL,
     email VARCHAR(100) NOT NULL
-    -- FOREIGN KEY (email) REFERENCES users(email)
+    -- KEY email (email),
+    -- CONSTRAINT items_ibfk_1 FOREIGN KEY (email) REFERENCES users(email)
 );
 
 /* Sample data for MU Marketplace DB */
