@@ -9,7 +9,7 @@ services:
         -  6603:3306
     volumes:
         - sql-volumes:/var/lib/mysql
-        - ./sql-service/sql-files:/root/sql-files
+        - ./sql-service/sql-files:docker-entrypoint-initdb.d
 
   python-env:
     build: ./py-service

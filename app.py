@@ -8,22 +8,23 @@ app.config["DEBUG"] = True
 app.config['SECRET_KEY'] = 'your secret key'
 app.secret_key = 'your secret key'
 
-try:
+def get_db_connection():
+    try:
 
-    mydb = mysql.connector.connect(
-        host="localhost",
-        user="root",
-        password="root",
-        port="6603",
-        database="mizzou_marketplace"
-    )
-    print("Connection was successful!")
+        mydb = mysql.connector.connect(
+            host="localhost",
+            user="db_user",
+            password="dbpass",
+            port="6603",
+            database="mizzou_marketplace"
+        )
+        print("Connection was successful!")
+        return mydb
 
-except Exception as err:
+    except Exception as err:
 
-    print(f"Connection failed. {err}")
-
-cursor = mydb.cursor(dictionary=True)
+        print(f"Connection failed. {err}")
+        return None
 
 # def get_db_connection():
 
@@ -36,15 +37,21 @@ cursor = mydb.cursor(dictionary=True)
 @app.route('/')
 def index():
 
-    # conn = get_db_connection()
+    conn = get_db_connection()
+    if conn is None:
+        flash("Could not connect to database")
+        return render_template('errorPage.html')
+    
 
+    cursor = conn.cursor(dictionary=True)
     query = 'SELECT * FROM items'
     cursor.execute(query)
     items = cursor.fetchall()
 
     # items = conn.execute(query).fetchall()
 
-    # conn.close()
+    cursor.close()
+    conn.close()
 
     return render_template('index.html', items=items)
 
@@ -101,16 +108,26 @@ def register():
             flash('Passwords must match!')
             return redirect(url_for('register'))
         
+        conn = get_db_connection()
+        if conn is None:
+            flash("Could not connect to database")
+            return redirect(url_for('register'))
+        
+        
         else:
+            cursor = conn.cursor(dictionary=True)
             query = f"INSERT INTO users (firstName, lastName, email, password) VALUES ('{firstName}', '{lastName}', '{email}', '{password}')"
             try:
                 cursor.execute(query)
-                mydb.commit()
+                conn.commit()
                 flash('Registered Successfully!')
-                return redirect(url_for('index'))
             except:
                 flash('Whoops! Something went wrong.')
-                return redirect(url_for('index'))
+            finally:
+                cursor.close()
+                conn.close()
+        
+        return redirect(url_for('index'))
 
     return render_template('register.html')
         
@@ -121,9 +138,19 @@ def login():
     if request.method =='POST': 
         email = request.form['email']
         password = request.form['password']
+
+        conn = get_db_connection()
+        if conn is None:
+            flash("Could not connect to database")
+            return redirect(url_for('login'))
+        
+        cursor = conn.cursor(dictionary=True)
         query = f"SELECT email, password FROM users WHERE email = '{email}' AND password = '{password}'"
         cursor.execute(query)
         result = cursor.fetchall()
+        cursor.close()
+        conn.close()
+
         if email == 'admin' and password == 'admin': #Block will be used to verify email/pass w/ database, for now redirects to index if email/pass are 'admin' 
             return redirect(url_for('index'))
         elif len(result) == 0:
