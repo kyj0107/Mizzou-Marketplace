@@ -13,8 +13,8 @@ def get_db_connection():
 
         mydb = mysql.connector.connect(
             host="localhost",
-            user="db_user",
-            password="dbpass",
+            user="root",
+            password="root",
             port="6603",
             database="mizzou_marketplace"
         )
