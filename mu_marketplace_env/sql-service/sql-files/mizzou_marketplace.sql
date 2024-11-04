@@ -1,29 +1,31 @@
-DROP DATABASE IF EXISTS mizzou_marketplace;
-CREATE DATABASE mizzou_marketplace;
+DROP DATABASE IF EXISTS `mizzou_marketplace`;
+CREATE DATABASE `mizzou_marketplace`;
 
-USE mizzou_marketplace;
+USE `mizzou_marketplace`;
 
-DROP TABLE IF EXISTS users;
-CREATE TABLE users (
-    userID INT AUTO_INCREMENT PRIMARY KEY,
-    firstName VARCHAR(50) NOT NULL,
-    lastName VARCHAR(50) NOT NULL,
-    email VARCHAR(100) NOT NULL,
-    password VARCHAR(30) NOT NULL
+DROP TABLE IF EXISTS `users`;
+CREATE TABLE `users` (
+    `userID` INT AUTO_INCREMENT PRIMARY KEY,
+    `firstName` VARCHAR(50) NOT NULL,
+    `lastName` VARCHAR(50) NOT NULL,
+    `email` VARCHAR(100) NOT NULL,
+    `password` VARCHAR(30) NOT NULL,
+    UNIQUE (`email`)
 );
 
-DROP TABLE IF EXISTS items;
-CREATE TABLE items (
-    itemID INT AUTO_INCREMENT PRIMARY KEY,
-    posted TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    itemName VARCHAR(40) NOT NULL,
-    itemDescription TEXT NOT NULL,
-    itemCondition ENUM('New', 'Good', 'Acceptable', 'Poor'),
-    itemType ENUM('Furniture', 'Textbooks', 'Supplies'),
-    price decimal(10,2) NOT NULL,
-    email VARCHAR(100) NOT NULL
-    -- KEY email (email),
-    -- CONSTRAINT items_ibfk_1 FOREIGN KEY (email) REFERENCES users(email)
+DROP TABLE IF EXISTS `items`;
+CREATE TABLE `items` (
+    `itemID` INT AUTO_INCREMENT PRIMARY KEY,
+    `posted` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    `itemName` VARCHAR(40) NOT NULL,
+    `itemDescription` TEXT NOT NULL,
+    `itemCondition` ENUM('New', 'Good', 'Acceptable', 'Poor'),
+    `itemType` ENUM('Furniture', 'Textbooks', 'Supplies'),
+    `price` decimal(10,2) NOT NULL,
+    `email` VARCHAR(100) NOT NULL,
+    FOREIGN KEY (`email`) REFERENCES `users` (`email`) ON DELETE CASCADE ON UPDATE CASCADE
+    -- KEY `email` (`email`),
+    -- CONSTRAINT `items_ibfk_1` FOREIGN KEY (`email`) REFERENCES `users` (`email`)
 );
 
 /* Sample data for MU Marketplace DB */
