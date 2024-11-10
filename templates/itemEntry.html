@@ -1,47 +1,74 @@
-{% extends 'base.html' %}
+
+ {% extends 'base.html' %}
+
 
 {% block content %}
-<h1>Fill out the deails below to put your item up for sale</h1>
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/itemEntry.css') }}">
+</head>
+
+<h1>Fill out the details below to put your item up for sale</h1>
+
 <form method="post" enctype="multipart/form-data">
-    <div>
-        <label>Item Name</label>
-        <input type="text" name="itemName" id="itemName" required> 
+    <!-- Item Name -->
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1">Item Name</span>
+        <input type="text" class="form-control" name="itemName" id="itemName" required>
     </div>
-    <div>
-        <label>Item Description</label>
-        <textarea name="description" id="description" required></textarea>
+
+    <!-- Item Description -->
+    <div class="input-group mb-3">
+        <span class="input-group-text">Description</span>
+        <textarea class="form-control" name="description" id="description" required></textarea>
     </div>
-    <div>
-        <label>Item Condition</label>
-        <select name="itemCondition" id="itemCondition" required>
-            <option value="" disabled selected>Choose an option that best matches the item's current condition</option>
+
+    <!-- Item Condition -->
+    <div class="input-group mb-3">
+        <label class="input-group-text" for="itemCondition">Item Condition</label>
+        <select class="form-select" name="itemCondition" id="itemCondition" required>
+            <option value="" disabled selected>Choose an option</option>
             <option value="new">New</option>
             <option value="good">Good</option>
             <option value="acceptable">Acceptable</option>
             <option value="poor">Poor</option>
         </select>
     </div>
-    <div>
-        <label>Item Type</label>
-        <select name="itemType" id="itemType" required>
-            <option value="" disabled selected>Choose an option that best fits what your item is:</option>
+
+    <!-- Item Tag -->
+    <div class="input-group mb-3">
+        <label class="input-group-text" for="itemTag">Item Type</label>
+        <select class="form-select" name="itemType" id="itemType" required>
+            <option value="" disabled selected>Choose an option</option>
             <option value="furniture">Furniture</option>
-            <option value="schoolSupply">School Supply</option>
-            <option value="textbook">Textbook</option>
+            <option value="supplies">Supplies</option>
+            <option value="textbooks">Textbooks</option>
         </select>
     </div>
-    <div>
-        <label>Asking Price</label>
-        <input type="number" name="askingPrice" id="askingPrice" required>
+
+    <!-- Asking Price -->
+    <div class="input-group mb-3">
+        <span class="input-group-text">$ Price</span>
+        <input type="number" class="form-control" name="askingPrice" id="askingPrice" required>
     </div>
+
+    <!-- File Upload -->
+    <div class="input-group mb-3">
+        <label class="input-group-text" for="inputGroupFile02">Upload</label>
+        <input type="file" class="form-control" name="itemImage" id="inputGroupFile02" accept="image/*" required>
+        
+    </div>
+
+    <!-- Submit Button -->
     <div>
         <label>Email</label>
         <input type="text" name="poster" id="poster" required> 
     </div>
     <!-- This is just to make sure you can actually add stuff to the database! Once we figure this out, we'll remove the email field. -->
-    <div>
-        <button class="submitbtn">Submit</button>
+    <div class="input-group mb-3">
+        <button type="submit" class="btn btn-primary w-100">Submit</button>
     </div>
 </form>
 
-{% endblock %}
+
+
+{% endblock %} 

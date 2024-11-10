@@ -65,25 +65,25 @@ def itemEntry():
 
     if request.method == 'POST':
 
+        item_name = request.form['itemName']
+        item_description = request.form['description']
+        item_condition = request.form['itemCondition']
+        item_type = request.form['itemType']
+        price = float(request.form['askingPrice'])
+        poster = request.form['poster']
+
         try:
-
-            item_name = request.form['itemName']
-            item_description = request.form['description']
-            item_condition = request.form['itemCondition']
-            item_type = request.form['itemType']
-            price = float(request.form['askingPrice'])
-            poster = request.form['poster']
-
             conn = get_db_connection()
             cursor = conn.cursor(dictionary=True)
-            query = f"INSERT INTO items(itemName, itemDescription, itemCondition, itemType, price, email) VALUES ('{item_name}', '{item_description}', '{item_condition.capitalize()}', '{item_type.capitalize()}')"
+            query = f"""
+                    INSERT INTO items(itemName, itemDescription, itemCondition, itemType, price, email) VALUES ('{item_name}', '{item_description}', '{item_condition.capitalize()}', '{item_type.capitalize()}', '{price}', '{poster}')
+                    """
             cursor.execute(query)
-            result = cursor.fetchall()
-            cursor.close()
-            conn.close()
+            conn.commit()
+            flash('Item added successfully!')
 
-        except:
-            flash("Something went wrong.")
+        except Exception as e:
+            flash(e)
     
     return render_template('itemEntry.html')
 
