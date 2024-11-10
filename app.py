@@ -67,6 +67,20 @@ def itemEntry():
 
         item_name = request.form['itemName']
         item_description = request.form['description']
+        '''
+        The program has trouble adding items with apostrophes in the description,
+        so the below block of code should fix that.
+        Honestly, there's probably a cleaner way to do this...
+        '''
+        indexes_with_apostrophes = []
+        for x in range(len(item_description)):
+            if item_description[x] == "'":
+                indexes_with_apostrophes.append(x)
+        offset = 0
+        for value in indexes_with_apostrophes:
+            item_description = item_description[:value + offset] + "\\" + item_description[value + offset:]
+            offset += 1
+
         item_condition = request.form['itemCondition']
         item_type = request.form['itemType']
         price = float(request.form['askingPrice'])
