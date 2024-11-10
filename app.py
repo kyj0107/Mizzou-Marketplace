@@ -60,8 +60,30 @@ def about():
     
     return render_template('about.html')
 
-@app.route('/itemEntry/')
+@app.route('/itemEntry/', methods=('GET', 'POST'))
 def itemEntry():
+
+    if request.method == 'POST':
+
+        try:
+
+            item_name = request.form['itemName']
+            item_description = request.form['description']
+            item_condition = request.form['itemCondition']
+            item_type = request.form['itemType']
+            price = float(request.form['askingPrice'])
+            poster = request.form['poster']
+
+            conn = get_db_connection()
+            cursor = conn.cursor(dictionary=True)
+            query = f"INSERT INTO items(itemName, itemDescription, itemCondition, itemType, price, email) VALUES ('{item_name}', '{item_description}', '{item_condition.capitalize()}', '{item_type.capitalize()}')"
+            cursor.execute(query)
+            result = cursor.fetchall()
+            cursor.close()
+            conn.close()
+
+        except:
+            flash("Something went wrong.")
     
     return render_template('itemEntry.html')
 

@@ -15,26 +15,30 @@
         <label>Item Condition</label>
         <select name="itemCondition" id="itemCondition" required>
             <option value="" disabled selected>Choose an option that best matches the item's current condition</option>
-            <option value="unused">Unused</option>
-            <option value="likeNew">Like New</option>
-            <option value="fair">Fair</option>
+            <option value="new">New</option>
+            <option value="good">Good</option>
+            <option value="acceptable">Acceptable</option>
             <option value="poor">Poor</option>
         </select>
     </div>
     <div>
-        <label>Item Tag</label>
-        <select name="itemTag" id="itemTag" required>
+        <label>Item Type</label>
+        <select name="itemType" id="itemType" required>
             <option value="" disabled selected>Choose an option that best fits what your item is:</option>
             <option value="furniture">Furniture</option>
             <option value="schoolSupply">School Supply</option>
             <option value="textbook">Textbook</option>
-            <option value="tech">Tech</option>
         </select>
     </div>
     <div>
         <label>Asking Price</label>
         <input type="number" name="askingPrice" id="askingPrice" required>
     </div>
+    <div>
+        <label>Email</label>
+        <input type="text" name="poster" id="poster" required> 
+    </div>
+    <!-- This is just to make sure you can actually add stuff to the database! Once we figure this out, we'll remove the email field. -->
     <div>
         <button class="submitbtn">Submit</button>
     </div>
