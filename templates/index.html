@@ -17,4 +17,10 @@
         </div>
     {% endfor %}
 
+    <div>
+        <form action="{{ url_for('logout') }}" method="post">
+            <button type="submit">Log Out</button>
+        </form>
+    </div>
+
 {% endblock %}

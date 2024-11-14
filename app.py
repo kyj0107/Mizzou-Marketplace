@@ -1,12 +1,15 @@
 # import sqlite3
 import re
-from flask import Flask, render_template, request, url_for, flash, redirect, abort, get_flashed_messages
+from flask import Flask, render_template, request, url_for, flash, redirect, abort, get_flashed_messages, session
+from flask_session import Session
+from flask_bcrypt import Bcrypt
 import mysql.connector
 
 app = Flask(__name__)
 app.config["DEBUG"] = True
 app.config['SECRET_KEY'] = 'your secret key'
 app.secret_key = 'your secret key'
+bcrypt = Bcrypt(app)
 
 def get_db_connection():
     try:
@@ -62,6 +65,10 @@ def about():
 
 @app.route('/itemEntry/', methods=('GET', 'POST'))
 def itemEntry():
+
+    if 'user_id' not in session:
+        flash("You must be logged in to access this page")
+        return redirect(url_for('login'))
 
     if request.method == 'POST':
 
@@ -157,9 +164,10 @@ def register():
             flash(f"{email} is already in use. Please choose another email.")
             return redirect(url_for('register'))
         else:
+            hashedPass = bcrypt.generate_password_hash(password).decode('utf-8') #Hashes password before storing
             try:
                 cursor = conn.cursor(dictionary=True)
-                query = f"INSERT INTO users (firstName, lastName, email, password) VALUES ('{firstName}', '{lastName}', '{email}', '{password}')"
+                query = f"INSERT INTO users (firstName, lastName, email, password) VALUES ('{firstName}', '{lastName}', '{email}', '{hashedPass}')"
                 cursor.execute(query)
                 conn.commit()
                 flash('Registered successfully!')
@@ -187,21 +195,26 @@ def login():
             return redirect(url_for('login'))
         
         cursor = conn.cursor(dictionary=True)
-        query = f"SELECT email, password FROM users WHERE email = '{email}' AND password = '{password}'"
-        cursor.execute(query)
-        result = cursor.fetchall()
+        cursor.execute("SELECT userID, password FROM users WHERE email = %s", (email,))
+        user = cursor.fetchone()
         cursor.close()
         conn.close()
 
-        if email == 'admin' and password == 'admin': #Block will be used to verify email/pass w/ database, for now redirects to index if email/pass are 'admin' 
-            return redirect(url_for('index'))
-        elif len(result) == 0:
-            flash('Invalid Email or Password')
-        else:
+        if user and bcrypt.check_password_hash(user['password'], password):
+            session['user_id'] = user['userID']
             flash('Logged in successfully!')
             return redirect(url_for('index'))
+        
+        else:
+            flash("Invalid Email or Password")
 
     return render_template('login.html')
+
+@app.route('/logout', methods=['POST'])
+def logout():
+    session.clear()
+    flash("Logout Successful!")
+    return redirect(url_for('login'))
 
 @app.route('/go_mu_homepage/')
 def go_mu_homepage():
