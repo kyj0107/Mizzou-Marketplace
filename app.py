@@ -131,39 +131,45 @@ def register():
         password = request.form['password']
         passwordConfirm = request.form['passwordConfirm']
 
+        validPassword, errorMessage = passwordCheck(password) #checks if password meets minimum requirements, if not rejects with message detailing what's missing
+
+        conn = get_db_connection()
+
+        cursor = conn.cursor(dictionary=True)
+        query = f"SELECT email FROM users WHERE email = '{email}'"
+        cursor.execute(query)
+        result = cursor.fetchone()
+        cursor.close()
+
         if not email.endswith('@umsystem.edu'): #checks if user email ends in umsystem.edu. If not, clears fields and asks for an email associated w/ university. If true, redirects to index page
             flash('You must use an email associated with the University')
             return redirect(url_for('register'))
-        
-        validPassword, errorMessage = passwordCheck(password) #checks if password meets minimum requirements, if not rejects with message detailing what's missing
-        if not validPassword:
+        elif not validPassword:
             flash(errorMessage)
             return redirect(url_for('register'))
-        
-        if password != passwordConfirm: #checks if passwords match
+        elif password != passwordConfirm: #checks if passwords match
             flash('Passwords must match!')
             return redirect(url_for('register'))
-        
-        conn = get_db_connection()
-        if conn is None:
+        elif conn is None: #checks if connection to database was successful
             flash("Could not connect to database")
             return redirect(url_for('register'))
-        
-        
+        elif result != None: #checks if email exists in database
+            flash(f"{email} is already in use. Please choose another email.")
+            return redirect(url_for('register'))
         else:
-            cursor = conn.cursor(dictionary=True)
-            query = f"INSERT INTO users (firstName, lastName, email, password) VALUES ('{firstName}', '{lastName}', '{email}', '{password}')"
             try:
+                cursor = conn.cursor(dictionary=True)
+                query = f"INSERT INTO users (firstName, lastName, email, password) VALUES ('{firstName}', '{lastName}', '{email}', '{password}')"
                 cursor.execute(query)
                 conn.commit()
-                flash('Registered Successfully!')
-            except:
-                flash('Whoops! Something went wrong.')
+                flash('Registered successfully!')
+                return redirect(url_for('index'))
+            except Exception as e:
+                flash(f"{e}. Try again?")
+                return redirect(url_for('register'))
             finally:
                 cursor.close()
                 conn.close()
-        
-        return redirect(url_for('index'))
 
     return render_template('register.html')
         
