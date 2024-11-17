@@ -37,7 +37,7 @@ def get_db_connection():
 
 #     return conn
 
-@app.route('/')
+@app.route('/', methods=('GET', 'POST'))
 def index():
 
     conn = get_db_connection()
@@ -45,11 +45,28 @@ def index():
         flash("Could not connect to database")
         return render_template('errorPage.html')
     
-
     cursor = conn.cursor(dictionary=True)
     query = 'SELECT * FROM items'
     cursor.execute(query)
     items = cursor.fetchall()
+    
+
+    if request.method == 'POST':
+        #Get the form data to query the api
+        sortBy = request.form['sort']
+
+        if sortBy == "":
+            query = 'SELECT * FROM items'
+            cursor.execute(query)
+            items = cursor.fetchall()
+            flash("Showing everything.")
+            return render_template('index.html', items=items)
+        if sortBy == "furniture" or sortBy == "textbooks" or sortBy == "supplies":
+            query = f"SELECT * FROM items WHERE itemType = '{sortBy.capitalize()}'"
+            cursor.execute(query)
+            items = cursor.fetchall()
+            flash(f"Showing {sortBy}.")
+            return render_template('index.html', items=items)
 
     # items = conn.execute(query).fetchall()
 
