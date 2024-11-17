@@ -7,7 +7,7 @@ DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
     `userID` INT AUTO_INCREMENT PRIMARY KEY,
     `firstName` VARCHAR(50) NOT NULL,
-    `lastName` VARCHAR(50) NOT NULL,
+    `lastInitial` VARCHAR(1) NOT NULL,
     `email` VARCHAR(100) NOT NULL,
     `password` VARCHAR(255) NOT NULL,
     UNIQUE (`email`)
@@ -31,10 +31,10 @@ CREATE TABLE `items` (
 /* Sample data for MU Marketplace DB */
 
 -- users entries
-INSERT INTO users (firstName, lastName, email, password) VALUES ("Karla", "Jaime", "kyjhgg@umsystem.edu", "4totally0riginalpassword");
-INSERT INTO users (firstName, lastName, email, password) VALUES ("Jordan", "Anderson", "jeafh4@umsystem.edu", "HowdoyoupushtoGi7?");
-INSERT INTO users (firstName, lastName, email, password) VALUES ("Angel", "Sun", "as2mf@umsystem.edu", "AveryCLEVERpassword");
-INSERT INTO users (firstName, lastName, email, password) VALUES ("Daniel", "Thompson", "dbthbw@umsystem.edu", "GraphicDesignismyburden");
+INSERT INTO users (firstName, lastInitial, email, password) VALUES ("Karla", "J", "kyjhgg@umsystem.edu", "4totally0riginalpassword");
+INSERT INTO users (firstName, lastInitial, email, password) VALUES ("Jordan", "A", "jeafh4@umsystem.edu", "HowdoyoupushtoGi7?");
+INSERT INTO users (firstName, lastInitial, email, password) VALUES ("Angel", "S", "as2mf@umsystem.edu", "AveryCLEVERpassword");
+INSERT INTO users (firstName, lastInitial, email, password) VALUES ("Daniel", "T", "dbthbw@umsystem.edu", "GraphicDesignismyburden");
 
 -- items entries
 INSERT INTO items(itemName, itemDescription, itemCondition, itemType, price, email) VALUES ("IKEA Nightstand", "An IKEA nightstand that took way too long to put together.", 'Good', 'Furniture', '100.00', "kyjhgg@umsystem.edu");

@@ -133,7 +133,7 @@ def register():
         get_flashed_messages() #clears any flashed messages from previous attempts
 
         firstName = request.form['firstName']
-        lastName = request.form['lastName']
+        lastInitial = request.form['lastInitial']
         email = request.form['email']
         password = request.form['password']
         passwordConfirm = request.form['passwordConfirm']
@@ -163,11 +163,14 @@ def register():
         elif result != None: #checks if email exists in database
             flash(f"{email} is already in use. Please choose another email.")
             return redirect(url_for('register'))
+        elif len(lastInitial) > 1:
+            flash("Enter only your last initial.")
+            return redirect(url_for('register'))
         else:
             hashedPass = bcrypt.generate_password_hash(password).decode('utf-8') #Hashes password before storing
             try:
                 cursor = conn.cursor(dictionary=True)
-                query = f"INSERT INTO users (firstName, lastName, email, password) VALUES ('{firstName}', '{lastName}', '{email}', '{hashedPass}')"
+                query = f"INSERT INTO users (firstName, lastInitial, email, password) VALUES ('{firstName}', '{lastInitial}', '{email}', '{hashedPass}')"
                 cursor.execute(query)
                 conn.commit()
                 flash('Registered successfully!')
