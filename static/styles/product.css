@@ -15,12 +15,12 @@
 
 .product {
     width: 100%;
-    max-width: 750px;
+    max-width: 60%;
     display: flex;
 }
 
 .gallery {
-    flex-basis: 47%;
+    flex-basis: 70%;
     background: black;
     margin-right: 3%;
     display: flex;
@@ -59,9 +59,14 @@
 
 .details p {
     color: #333;
+    font-size: 20px;
     margin-bottom: 20px;
 }
 
+.details label {
+    font-size: 20px;
+    border-radius: 10px;
+}
 .size-select {
     display: flex;
     align-items: center;
@@ -100,7 +105,7 @@
     border: none;
     outline: none;
     padding: 5px;
-    width: 50px;
+    width: 200px;
     border-radius: 12px;
     text-align: center;
 }
@@ -114,22 +119,27 @@ form button {
     border-radius: 30px;
     border: none;
     outline: none;
-    margin-top: 30px;
+    margin-top: 50px;
     box-shadow: 0 3px 3px rgba(0, 0, 0, 0.1);
     cursor: pointer;
 }
 
 .controls {
     position: absolute;
-    bottom: 30px;
+    bottom: 20px;
     display: flex;
     gap: 15px;
 }
 
 .btn {
-    width: 20px;
-    height: 20px;
+    width: 25px;
+    height: 25px;
+    padding: 10px;
     border-radius: 50%;
-    background: #E4F1FA;
+    background-color: #E4F1FA;
     cursor: pointer;
+}
+
+.btn:hover {
+    background-color:#F1B82D;
 }

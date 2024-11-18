@@ -12,32 +12,32 @@
     <div class="container">
         <div class="product">
             <div class="gallery">
-                <img src="{{ url_for('static', filename='/Images/macbook2.jpeg') }}" id="productImg" alt="Apple MacBook Air Image">
+                <img src="{{ url_for('static', filename='/Images/ikea nighstand1.jpg') }}" id="productImg" alt="IKEA Nightstand">
                 <div>
                 </div>
                 <div class="controls">
-                    <span class="btn" data-img="{{ url_for('static', filename='/Images/laptop-3912759_1280.jpg') }}"></span>
-                    <span class="btn" data-img="{{ url_for('static', filename='/Images/macbook2.jpeg') }}"></span>
+                    <span class="btn" data-img="{{ url_for('static', filename='/Images/ikea nighstand1.jpg') }}"></span>
+                    <span class="btn" data-img="{{ url_for('static', filename='/Images/ikea nightstand2.jpg') }}"></span>
+                    <span class="btn" data-img="{{ url_for('static', filename='/Images/ikea nightstand3.jpg') }}"></span>
                 </div>
             </div>
             <div class="details">
-                <h1>16-inch Apple MacBook Pro w/M1 Chip</h1>
-                <h2>$1,200</h2>
-                <p>This is a used 2021 MacBook Pro; it's been well taken care of and is in good condition.
-                    Reason of selling it because for some reason that Xcode and Aodbe After Effects won't load.
+                <h1>IKEA Nightstand</h1>
+                <h2>$40</h2>
+                <p>This is a used ikea nightstand. 
                 </p>
                 <form>
                     <div>
                         <label>Condition: Good</label>
                     </div>
                     <div>
-                        <a href="{{ url_for('nightstand') }}">Check out the nightstand</a>
                     </div>
                     <button type="button">Contact Seller</button>
                 </form>
             </div>
         </div>
     </div>
+
     <script>
         
         const productImg = document.getElementById("productImg");
@@ -49,9 +49,6 @@
             });
         });
     </script>
-    
 </body>
-
-
 
 {% endblock %}
