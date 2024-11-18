@@ -130,6 +130,11 @@ def product():
     
     return render_template('product.html')
 
+@app.route('/nightstand/') 
+def product():
+    
+    return render_template('nightstand.html')
+
 def passwordCheck(password): #function to enforce password requirements
     if not re.search(r"[A-Z]", password):
         return False, "Password missing an uppercase letter"
