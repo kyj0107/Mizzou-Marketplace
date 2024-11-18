@@ -131,7 +131,7 @@ def product():
     return render_template('product.html')
 
 @app.route('/nightstand/') 
-def product():
+def nightstand():
     
     return render_template('nightstand.html')
 
