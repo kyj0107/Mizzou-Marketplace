@@ -244,4 +244,9 @@ def go_mu_homepage():
 def faq():
     return render_template('faq.html')
 
+@app.route('/policy/')
+def policy():
+    return render_template('policy.html')
+    
+
 app.run(port=5002, debug=True)
