@@ -83,7 +83,7 @@ def about():
 @app.route('/itemEntry/', methods=('GET', 'POST'))
 def itemEntry():
 
-    if 'user_id' not in session:
+    if 'user_id' not in session: #checks if user is signed in and redirects to login if not
         flash("You must be logged in to access this page")
         return redirect(url_for('login'))
 
@@ -151,6 +151,9 @@ def passwordCheck(password): #function to enforce password requirements
 @app.route('/register/', methods=['GET', 'POST'])
 def register():
 
+    if 'user_id' in session: #checks if user is signed in and redirects to their profile if so
+        return redirect(url_for('profile'))
+
     if request.method =='POST':
         get_flashed_messages() #clears any flashed messages from previous attempts
 
@@ -196,7 +199,7 @@ def register():
                 cursor.execute(query)
                 conn.commit()
                 flash('Registered successfully!')
-                return redirect(url_for('index'))
+                return redirect(url_for('login'))
             except Exception as e:
                 flash(f"{e}. Try again?")
                 return redirect(url_for('register'))
@@ -210,6 +213,9 @@ def register():
 @app.route('/login/', methods=['GET', 'POST'])
 def login():
 
+    if 'user_id' in session: #checks if user is signed in and redirects to their profile if so
+        return redirect(url_for('profile'))
+
     if request.method =='POST': 
         email = request.form['email']
         password = request.form['password']
@@ -220,10 +226,16 @@ def login():
             return redirect(url_for('login'))
         
         cursor = conn.cursor(dictionary=True)
-        cursor.execute("SELECT userID, password FROM users WHERE email = %s", (email,))
-        user = cursor.fetchone()
-        cursor.close()
-        conn.close()
+        try:
+            cursor.execute("SELECT userID, password FROM users WHERE email = %s", (email,))
+            user = cursor.fetchone()
+        except Exception as err:
+            app.logger.error(f"Login error: {err}")
+            flash('An error has occurred, please try again.')
+            user = None
+        finally:
+            cursor.close()
+            conn.close()
 
         if user and bcrypt.check_password_hash(user['password'], password):
             session['user_id'] = user['userID']
@@ -234,6 +246,41 @@ def login():
             flash("Invalid Email or Password")
 
     return render_template('login.html')
+
+@app.route('/profile/')
+def profile():
+
+    if 'user_id' not in session: #checks if user is signed in and redirects to login if not
+        flash("You must be logged in to access this page")
+        return redirect(url_for('login'))
+    
+    conn = get_db_connection()
+    if conn is None:
+        flash("Could not connect to database")
+        return render_template('errorPage.html')
+    
+    cursor = conn.cursor(dictionary=True)
+    try:
+        cursor.execute("SELECT firstName, lastInitial, email FROM users WHERE userID = %s", (session['user_id'],))
+        user = cursor.fetchone()
+        if user:
+            cursor.execute("SELECT itemName, itemDescription, itemCondition, price, posted FROM items WHERE email = %s", (user['email'],))
+            items = cursor.fetchall()
+        else:
+            items = []
+    except Exception as err:
+            app.logger.error(f"Login error: {err}")
+            flash('An error has occurred, please try again.')
+            user = None
+    finally:
+        cursor.close()
+        conn.close()
+        
+    if not user:
+        flash("Could not load user data.")
+        return redirect(url_for('index'))
+
+    return render_template('profile.html', user=user, items=items)
 
 @app.route('/logout', methods=['POST'])
 def logout():
