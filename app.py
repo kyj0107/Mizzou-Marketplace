@@ -252,6 +252,11 @@ def faq():
 @app.route('/policy/')
 def policy():
     return render_template('policy.html')
+
+@app.route('/support/')
+def support():
+    
+    return render_template('support.html')
     
 
 app.run(port=5002, debug=True)
