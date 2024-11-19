@@ -3,27 +3,45 @@
 {% block content %}
 
 <h1>Your Profile</h1>
-<h2>Please sign in with Mizzou credentials:</h2>
 
-
+<h2>Your Info:</h2>
 <div>
     <label>First Name:</label>
+    <span>{{ user.firstName }}</span>
 </div>
 <div>
-    <label>Last Name:</label>
+    <label>Last Initial:</label>
+    <span>{{ user.lastInitial }}</span>
 </div>
 <div>
     <label>Email:</label>
+    <span>{{ user.email }}</span>
 </div>
+
+<h2>Your Item Listings</h2>
+<br>
+    {% for item in items %}
+        <div class="card">
+            <img class="card-img-top" src="" alt="Product image unavailable">
+            <div class="card-body">
+                <h5>{{ item['itemName'] }}</h5>
+                <h6>{{ item['poster'] }}</h6>
+                <p>{{ item['itemDescription'] }}</p>
+                <p> {{ item['posted'] }}</p>
+                <button class="card-btn"><a href="#" class="card-link">Go to Product</a></button>
+            </div>
+        </div>
+    {% endfor %}
+
 <div>
     <button type="submit">Update Profile</button> 
 </div>
 
-<form>
-    <div>
+<div>
+    <form action="{{ url_for('logout') }}" method="post">
         <button type="submit">Log Out</button> 
-    </div>
-</form>
+    </form>
+</div>
 
 <!-- THIS IS PLACEHOLDER!! Plans for this page are to pull and display profile info for currently signed in users, and allow them to update info like password by using the 'update profile' button to refdirect to a form for that. Lastly they can sign out using the button at the bottom.-->
 
