@@ -4,12 +4,14 @@ from flask import Flask, render_template, request, url_for, flash, redirect, abo
 from flask_session import Session
 from flask_bcrypt import Bcrypt
 import mysql.connector
+from datetime import datetime
 
 app = Flask(__name__)
 app.config["DEBUG"] = True
 app.config['SECRET_KEY'] = 'your secret key'
 app.secret_key = 'your secret key'
 bcrypt = Bcrypt(app)
+app.config['INACTIVITY_TIMEOUT'] = 600
 
 def get_db_connection():
     try:
@@ -74,6 +76,26 @@ def index():
     conn.close()
 
     return render_template('index.html', items=items)
+
+@app.before_request
+def activityCheck(): #checks for user inactivity, logs them out if no new requests are made within a 10 minute window
+    if 'user_id' in session:
+        latestActivity = session.get('latestActivity')
+        now = datetime.utcnow() #references UTC time to avoid local timezone errors
+        
+        if not latestActivity:
+            session['latestActivity'] = now.strftime('%Y-%m-%d %H:%M:%S')
+        else:
+            latestActivityTime = datetime.strptime(latestActivity, '%Y-%m-%d %H:%M:%S')
+            inactivityDuration = (now - latestActivityTime).total_seconds()
+
+            if inactivityDuration > app.config.get('INACTIVITY_TIMEOUT', 600): #logs user out if their inactivity duration is greater than 10 mins
+                session.clear()
+                flash("You have been logged out due to inactivity.")
+                return redirect(url_for('login'))
+        
+        session['latestActivity'] = now.strftime('%Y-%m-%d %H:%M:%S') #updates latest activity timestamp with the most recent request and resets the timer
+            
 
 @app.route('/about/')
 def about():
