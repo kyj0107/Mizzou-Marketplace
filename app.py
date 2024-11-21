@@ -42,6 +42,10 @@ def get_db_connection():
 @app.route('/', methods=('GET', 'POST'))
 def index():
 
+    if 'user_id' not in session: #checks if user is signed in and redirects to login if not
+        flash("You must be logged in to access this page")
+        return redirect(url_for('login'))
+
     conn = get_db_connection()
     if conn is None:
         flash("Could not connect to database")
@@ -141,6 +145,7 @@ def itemEntry():
             cursor.execute(query)
             conn.commit()
             flash('Item added successfully!')
+            return redirect(url_for('index'))
 
         except Exception as e:
             flash(e)
