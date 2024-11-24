@@ -22,6 +22,7 @@ CREATE TABLE `items` (
     `itemCondition` ENUM('New', 'Good', 'Acceptable', 'Poor'),
     `itemType` ENUM('Furniture', 'Textbooks', 'Supplies', 'Clothing'),
     `price` decimal(10,2) NOT NULL,
+    `listed` BOOLEAN DEFAULT TRUE,
     `email` VARCHAR(100) NOT NULL,
     FOREIGN KEY (`email`) REFERENCES `users` (`email`) ON DELETE CASCADE ON UPDATE CASCADE
     -- KEY `email` (`email`),
@@ -41,3 +42,9 @@ INSERT INTO items(itemName, itemDescription, itemCondition, itemType, price, ema
 INSERT INTO items(itemName, itemDescription, itemCondition, itemType, price, email) VALUES ("Chemistry Matters", "That one chemistry textbook with the chemistry pun in the credits.", 'New', 'Textbooks', '200.00', "jeafh4@umsystem.edu");
 INSERT INTO items(itemName, itemDescription, itemCondition, itemType, price, email) VALUES ("Apple MacBook Pro 16-inch w/ M1 chip", "This MacBook has seen some things. Don't open Xcode or Adobe After Effects on this.", 'Acceptable', 'Supplies', '1000.00', "dbthbw@umsystem.edu");
 INSERT INTO items(itemName, itemDescription, itemCondition, itemType, price, email) VALUES ("Plain blue T-shirt", "A simple T-shirt. A few holes in the seams. Maybe you can fix it?", 'Acceptable', 'Clothing', '3.00', "kyjhgg@umsystem.edu");
+
+UPDATE items SET listed = FALSE WHERE itemID = 4;
+
+/* Interesting little fact! BOOLEAN isn't really a data type in MySQL, but you can use it and it creates a TINYINT value instead.
+SELECT * FROM items WHERE listed = TRUE and SELECT * FROM items WHERE listed = 1 work the same!
+But yeah, TRUE is 1 and FALSE is 0. I'll probably treat it like a typical boolean, though. */
