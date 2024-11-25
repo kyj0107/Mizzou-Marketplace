@@ -12,32 +12,31 @@
     <div class="container">
         <div class="product">
             <div class="gallery">
-                <img src="{{ url_for('static', filename='/Images/macbook2.jpeg') }}" id="productImg" alt="Apple MacBook Air Image">
-                <div>
-                </div>
+                <img src="{{ url_for('static', filename='/Images/chemistry1.jpg') }}" id="productImg" alt="Textbook">
                 <div class="controls">
-                    <span class="btn" data-img="{{ url_for('static', filename='/Images/laptop-3912759_1280.jpg') }}"></span>
-                    <span class="btn" data-img="{{ url_for('static', filename='/Images/macbook2.jpeg') }}"></span>
+                    <span class="btn" data-img="{{ url_for('static', filename='/Images/chemistry1.jpg') }}"></span>
+                    <span class="btn" data-img="{{ url_for('static', filename='/Images/chemistry2.jpg') }}"></span>
                 </div>
             </div>
             <div class="details">
-                <h1>16-inch Apple MacBook Pro w/M1 Chip</h1>
-                <h2>$1,000</h2>
-                <p>This is a used 2021 MacBook Pro; it's been well taken care of and is in good condition.
-                    Reason of selling it because for some reason that Xcode and Aodbe After Effects won't load.
-                </p>
+                <h1>Biology Textbook</h1>
+                <h2>$150</h2>
+                <p>This is a used Biology textbook, perfect for high school or college students.</p>
                 <form>
                     <div>
-                        <label>Condition: Good</label>
+                        <label>Condition: Like New</label>
                     </div>
                     <div>
-                        <a href="{{ url_for('nightstand') }}">Check out the nightstand</a>
                     </div>
                     <button type="button">Contact Seller</button>
                 </form>
             </div>
+            <div>
+                <a href="{{ url_for('textbook') }}">Check out the textbook</a>
+            </div>
         </div>
     </div>
+
     <script>
         
         const productImg = document.getElementById("productImg");
@@ -49,9 +48,6 @@
             });
         });
     </script>
-    
 </body>
-
-
 
 {% endblock %}

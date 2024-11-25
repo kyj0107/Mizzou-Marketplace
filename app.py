@@ -162,6 +162,11 @@ def nightstand():
     
     return render_template('nightstand.html')
 
+@app.route('/textbook/') 
+def textbook():
+    
+    return render_template('textbook.html')
+
 def passwordCheck(password): #function to enforce password requirements
     if not re.search(r"[A-Z]", password):
         return False, "Password missing an uppercase letter"
