@@ -2,7 +2,6 @@
     display: flex;
     background-color: #F1B82D;
     color: black;
-    padding: 6px;
     justify-content: space-between;
     border-top: 1px solid black;
     align-items: center;
@@ -11,7 +10,7 @@
     bottom: 0;
 }
 .footeritems{
-    font-size: 20px;
+    font-size: 18px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -19,23 +18,25 @@
     padding-right: 100px;
 }
 #footerimage{
-    width: 125%;
-    height: 125%;
+    width: 100%;
+    height: 100%;
 }
 .footeritems a{
     text-decoration: none;
-    padding: 20px;
-    margin: 0 15px;
-    margin-left: 75px;
+    display: flex;
+    padding: 1px;
+    margin: 0 5px;
+    margin-left: 50px;
 }
 .footeritems a:hover{
     text-decoration: none;
+    display: flex;
 }
 .footeritems a:visited{
     color: black;
 }
 #munavbarlink{
-    padding-right: 80px;
+    padding-right: 60px;
     width: 50%;
     height: 50%;
 }

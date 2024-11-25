@@ -46,14 +46,16 @@
 
 .details h1 {
     color: #000;
-    font-size: 30px;
+    font-size: 26px;
+    text-align: left;
     margin-bottom: 10px;
 }
 
 .details h2 {
     color: #7d7d7d;
-    font-size: 30px;
+    font-size: 26px;
     font-weight: 600;
+    text-align: left;
     margin-bottom: 15px;
 }
 
@@ -69,7 +71,6 @@
 }
 .size-select {
     display: flex;
-    align-items: center;
     margin-top: 30px;
 }
 
