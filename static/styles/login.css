@@ -69,3 +69,17 @@ a {
     color: #1C5E90;
     text-align: center;
 }
+
+.input-group {
+    border-left: none;
+}
+
+.form-control {
+    border-left: none;
+}
+.input-group .input-group-text {
+    border-left: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}

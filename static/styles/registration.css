@@ -74,3 +74,17 @@ p {
 a {
     color: #1C5E90; /* Link color */
 }
+
+.input-group {
+    border-left: none;
+}
+
+.form-control {
+    border-left: none;
+}
+.input-group .input-group-text {
+    border-right: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}

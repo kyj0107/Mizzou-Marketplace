@@ -134,13 +134,13 @@ def itemEntry():
         item_condition = request.form['itemCondition']
         item_type = request.form['itemType']
         price = float(request.form['askingPrice'])
-        poster = request.form['poster']
+        userID = session['user_id']
 
         try:
             conn = get_db_connection()
             cursor = conn.cursor(dictionary=True)
             query = f"""
-                    INSERT INTO items(itemName, itemDescription, itemCondition, itemType, price, email) VALUES ('{item_name}', '{item_description}', '{item_condition.capitalize()}', '{item_type.capitalize()}', '{price}', '{poster}')
+                    INSERT INTO items(itemName, itemDescription, itemCondition, itemType, price, userID) VALUES ('{item_name}', '{item_description}', '{item_condition.capitalize()}', '{item_type.capitalize()}', '{price}', '{userID}')
                     """
             cursor.execute(query)
             conn.commit()
@@ -293,10 +293,10 @@ def profile():
     
     cursor = conn.cursor(dictionary=True)
     try:
-        cursor.execute("SELECT firstName, lastInitial, email FROM users WHERE userID = %s", (session['user_id'],))
+        cursor.execute("SELECT userID, firstName, lastInitial, email FROM users WHERE userID = %s", (session['user_id'],))
         user = cursor.fetchone()
         if user:
-            cursor.execute("SELECT itemName, itemDescription, itemCondition, price, posted FROM items WHERE email = %s", (user['email'],))
+            cursor.execute("SELECT itemName, itemDescription, itemCondition, price, posted FROM items WHERE userID = %s", (user['userID'],))
             items = cursor.fetchall()
         else:
             items = []
