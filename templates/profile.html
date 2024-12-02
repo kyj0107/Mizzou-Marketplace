@@ -18,20 +18,43 @@
     <span>{{ user.email }}</span>
 </div>
 
-<h2>Your Item Listings</h2>
+<h2>Your Listed Items</h2>
 <br>
-    {% for item in items %}
+{% if listedItems %}
+    {% for item in listedItems %}
         <div class="card">
             <img class="card-img-top" src="" alt="Product image unavailable">
-            <div class="card-body">
-                <h5>{{ item['itemName'] }}</h5>
-                <h6>{{ item['poster'] }}</h6>
-                <p>{{ item['itemDescription'] }}</p>
-                <p> {{ item['posted'] }}</p>
-                <button class="card-btn"><a href="#" class="card-link">Go to Product</a></button>
-            </div>
+            <h3 class="card-title"><strong>Listing Name:</strong> {{ item['itemName'] }}</h3>
+            <p class="card-text"><strong>Description:</strong> {{ item['itemDescription'] }}</p>
+            <p class="card-text"><strong>Condition:</strong> {{ item['itemCondition'] }}</p>
+            <p class="card-text"><strong>Type:</strong> {{ item['itemType'] }}</p>
+            <p class="card-text"><strong>Price:</strong> ${{ item['price'] }}</p>
+            <p class="card-text"><small class="text-muted">Listed on: {{ item['posted'] }}</small></p>
+            <form action="{{ url_for('unlistItem', item_id=item['itemID']) }}" method="post" onsubmit="return confirmUnlist()">
+                <button type="submit" class=>Unlist Item</button>
+            </form>
         </div>
     {% endfor %}
+{% else %}
+    <p>You have no currently listed items.</p>
+{% endif %}
+
+<h2>Your Unlisted Items</h2>
+{% if unlistedItems %}
+    {% for item in unlistedItems %}
+        <div class="card">
+            <img class="card-img-top" src="" alt="Product image unavailable">
+            <h3 class="card-title"><strong>Listing Name:</strong> {{ item['itemName'] }}</h3>
+            <p class="card-text"><strong>Description:</strong> {{ item['itemDescription'] }}</p>
+            <p class="card-text"><strong>Condition:</strong> {{ item['itemCondition'] }}</p>
+            <p class="card-text"><strong>Type:</strong> {{ item['itemType'] }}</p>
+            <p class="card-text"><strong>Price:</strong> ${{ item['price'] }}</p>
+            <p class="card-text"><small class="text-muted">Listed on: {{ item['posted'] }}</small></p>
+        </div>
+    {% endfor %}
+{% else %}
+    <p>You currently have no unlisted items.</p>
+{% endif %}
 
 <div>
     <button type="submit">Update Profile</button> 
@@ -43,6 +66,10 @@
     </form>
 </div>
 
-<!-- THIS IS PLACEHOLDER!! Plans for this page are to pull and display profile info for currently signed in users, and allow them to update info like password by using the 'update profile' button to refdirect to a form for that. Lastly they can sign out using the button at the bottom.-->
+<script>
+    function confirmUnlist() {
+        return confirm("Are you sure you want to unlist this item? This action cannot be undone.");
+    }
+</script>
 
 {% endblock %}

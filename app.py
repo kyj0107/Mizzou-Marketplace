@@ -296,10 +296,13 @@ def profile():
         cursor.execute("SELECT userID, firstName, lastInitial, email FROM users WHERE userID = %s", (session['user_id'],))
         user = cursor.fetchone()
         if user:
-            cursor.execute("SELECT itemName, itemDescription, itemCondition, price, posted FROM items WHERE userID = %s", (user['userID'],))
+            cursor.execute("SELECT itemID, itemName, itemDescription, itemCondition, itemType, price, posted, listed FROM items WHERE userID = %s", (user['userID'],))
             items = cursor.fetchall()
+            listedItems = [item for item in items if item['listed']] #this sorts the gathered items into either listed or unlisted categories
+            unlistedItems = [item for item in items if not item['listed']]
         else:
-            items = []
+            listedItems= []
+            unlistedItems = []
     except Exception as err:
             app.logger.error(f"Login error: {err}")
             flash('An error has occurred, please try again.')
@@ -312,7 +315,35 @@ def profile():
         flash("Could not load user data.")
         return redirect(url_for('index'))
 
-    return render_template('profile.html', user=user, items=items)
+    return render_template('profile.html', user=user, listedItems=listedItems, unlistedItems=unlistedItems)
+
+@app.route('/unlist/<int:item_id>', methods=['POST'])
+def unlistItem(item_id):
+    if 'user_id' not in session:  # Ensure the user is logged in
+        flash("You must be logged in to perform this action.")
+        return redirect(url_for('login'))
+
+    conn = get_db_connection()
+    if conn is None:
+        flash("Could not connect to database.")
+        return redirect(url_for('profile'))
+
+    cursor = conn.cursor(dictionary=True) 
+    try:
+        cursor.execute("UPDATE items SET listed = FALSE WHERE itemID = %s AND userID = %s", (item_id, session['user_id']))
+        conn.commit()
+
+        if cursor.rowcount == 0:
+            flash("Could not unlist item.")
+        else:
+            flash("Item has been unlisted")
+    except Exception as err:
+        flash("An error has occurred, please try again")
+    finally:
+        cursor.close()
+        conn.close()
+
+    return redirect(url_for('profile'))    
 
 @app.route('/logout', methods=['POST'])
 def logout():
@@ -320,9 +351,9 @@ def logout():
     flash("Logout Successful!")
     return redirect(url_for('login'))
 
-@app.route('/go_mu_homepage/')
-def go_mu_homepage():
-    return redirect("https://missouri.edu/", code=302)
+#@app.route('/go_mu_homepage/')   This was removed just in case of copyright issues
+#def go_mu_homepage():
+    #return redirect("https://missouri.edu/", code=302)
 
 @app.route('/faq/')
 def faq():
