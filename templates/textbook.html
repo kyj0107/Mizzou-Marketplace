@@ -30,6 +30,14 @@
                     </div>
                     <button type="button">Contact Seller</button>
                 </form>
+                <form>
+                    <br></br>
+                    <br></br>
+                    <div>
+                        <span id="prevProduct" class="back-button">Back</span>
+                        <span id="nextProduct" class="switch-button">Next</span>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
@@ -43,6 +51,13 @@
             button.addEventListener("click", () => {
                 productImg.src = button.getAttribute("data-img");
             });
+        });
+    </script>
+    <script>
+        const prevProduct = document.getElementById("prevProduct");
+
+        prevProduct.addEventListener("click", () => {
+            window.location.href = "{{ url_for ('nightstand')}}"; 
         });
     </script>
 </body>
