@@ -368,5 +368,5 @@ def support():
     
     return render_template('support.html')
     
-
-app.run(host='0.0.0.0', port=80, debug=True)
+#dont need when using aws
+#app.run(host='0.0.0.0', port=80, debug=True)
