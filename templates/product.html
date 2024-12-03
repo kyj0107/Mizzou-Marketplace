@@ -30,10 +30,15 @@
                     <div>
                         <label>Condition: Good</label>
                     </div>
-                    <div>
-                        <a href="{{ url_for('nightstand') }}">Check out the nightstand</a>
-                    </div>
                     <button type="button">Contact Seller</button>
+                </form>
+                <form>
+                    <br></br>
+                    <br></br>
+                    <div>
+                        <span id="prevProduct" class="back-button">Back</span>
+                        <span id="nextProduct" class="switch-button">Next</span>
+                    </div>
                 </form>
             </div>
         </div>
@@ -49,7 +54,14 @@
             });
         });
     </script>
+    <script>
+        // JavaScript for span redirection
+        const nextProduct = document.getElementById("nextProduct");
     
+        nextProduct.addEventListener("click", () => {
+            window.location.href = "{{ url_for('nightstand') }}";
+        });
+    </script>
 </body>
 
 

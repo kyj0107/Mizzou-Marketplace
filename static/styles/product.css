@@ -35,6 +35,7 @@
 }
 
 .details {
+    position: relative;
     flex-basis: 53%;
     background: #F1B82D;
     padding: 40px 60px;
@@ -143,4 +144,43 @@ form button {
 
 .btn:hover {
     background-color:#F1B82D;
+}
+
+.switch-button{
+
+    background: #000000;
+    color: #E4F1FA;
+    font-size: 14px;
+    width: auto;
+    padding: 10px;
+    border-radius: 10px;
+    margin-left: 140px;
+    border: none;
+    outline: none;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+.switch-button:hover{
+    background-color: #F1B82D;
+}
+
+.back-button{
+    
+    background: #000000;
+    color: #E4F1FA;
+    font-size: 14px;
+    width: auto;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    margin-left: 10px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+.back-button:hover{
+    background-color: #F1B82D;
+
 }

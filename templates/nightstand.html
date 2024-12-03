@@ -30,13 +30,19 @@
                     <div>
                         <label>Condition: Good</label>
                     </div>
-                    <div>
-                        <a href="{{ url_for('textbook') }}">Check out the textbook</a>
-                    </div>
                     <button type="button">Contact Seller</button>
+                </form>
+                <form>
+                    <br></br>
+                    <br></br>
+                    <div>
+                        <span id="prevProduct" class="back-button">Back</span>
+                        <span id="nextProduct" class="switch-button">Next</span>
+                    </div>
                 </form>
             </div>
         </div>
+        
     </div>
 
     <script>
@@ -48,6 +54,21 @@
             button.addEventListener("click", () => {
                 productImg.src = button.getAttribute("data-img");
             });
+        });   
+
+    </script>
+
+    <script>
+        // JavaScript for span redirection
+        const nextProduct = document.getElementById("nextProduct");
+    
+        nextProduct.addEventListener("click", () => {
+            window.location.href = "{{ url_for('textbook') }}";
+        });
+        const prevProduct = document.getElementById("prevProduct");
+
+        prevProduct.addEventListener("click", () => {
+            window.location.href = "{{ url_for ('product')}}"; 
         });
     </script>
 </body>
