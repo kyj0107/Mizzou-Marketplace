@@ -1,9 +1,11 @@
 .footer{
+    font-family: 'Times New Roman', Times, serif;
     display: flex;
     background-color: #F1B82D;
     color: black;
     justify-content: space-between;
     border-top: 1px solid black;
+    margin-top: 50px;
     align-items: center;
     position: fixed;
     width: 100%;

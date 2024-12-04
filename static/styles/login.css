@@ -1,5 +1,6 @@
 
 form {
+    font-family: 'Times New Roman', Times, serif;
     background-color: #fff;
     border-radius: 15px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
@@ -12,17 +13,20 @@ form {
 }
 
 h1 {
+    font-family: 'Times New Roman', Times, serif;
     color: #000000;
     margin: 20px 0;
     text-align: center;
 }
 
 h2 {
+    font-family: 'Times New Roman', Times, serif;
     color: #7d7d7d;
     text-align: center;
 }
 
 label {
+    font-family: 'Times New Roman', Times, serif;
     display: block;
     width: 100%;
     margin-top: 10px;
