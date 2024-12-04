@@ -32,8 +32,8 @@ CREATE TABLE `items` (
 /* Sample data for MU Marketplace DB */
 
 -- users entries
-INSERT INTO users (firstName, lastInitial, email, password) VALUES ("Karla", "J", "kyjhgg@umsystem.edu", "$2b$12$X6frsUibnsh9akDiNWAMceZwHx2ReaQB.C/XN54wcFsOPllHxWgbK"); -- Atotally0riginalpassword!
-INSERT INTO users (firstName, lastInitial, email, password) VALUES ("Jordan", "A", "jeafh4@umsystem.edu", "$2b$12$z2yGDbEkvS6EQWrwwbQ0begypwXAMNN7mgfOlW455RQEr44xKc3oW"); --Testtest1!
+INSERT INTO users (firstName, lastInitial, email, password) VALUES ("Karla", "J", "kyjhgg@umsystem.edu", "$2b$12$X6frsUibnsh9akDiNWAMceZwHx2ReaQB.C/XN54wcFsOPllHxWgbK"); /* Atotally0riginalpassword! */
+INSERT INTO users (firstName, lastInitial, email, password) VALUES ("Jordan", "A", "jeafh4@umsystem.edu", "$2b$12$z2yGDbEkvS6EQWrwwbQ0begypwXAMNN7mgfOlW455RQEr44xKc3oW"); /* Testtest1! */
 INSERT INTO users (firstName, lastInitial, email, password) VALUES ("Angel", "S", "as2mf@umsystem.edu", "AveryCLEVERpassword");
 INSERT INTO users (firstName, lastInitial, email, password) VALUES ("Daniel", "T", "dbthbw@umsystem.edu", "GraphicDesignismyburden");
 
