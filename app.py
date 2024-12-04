@@ -68,7 +68,7 @@ def index():
             flash("Showing everything.")
             return render_template('index.html', items=items)
         if sortBy == "furniture" or sortBy == "textbooks" or sortBy == "supplies" or sortBy == "clothing":
-            query = f"SELECT * FROM items WHERE itemType = '{sortBy.capitalize()} AND listed = TRUE'"
+            query = f"SELECT * FROM items WHERE itemType = '{sortBy.capitalize()}' AND listed = TRUE"
             cursor.execute(query)
             items = cursor.fetchall()
             flash(f"Showing {sortBy}.")
