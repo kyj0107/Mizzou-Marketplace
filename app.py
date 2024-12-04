@@ -77,14 +77,14 @@ def index():
             cursor.execute(query)
             items = cursor.fetchall()
             flash(f"Showing {sortBy}.")
-            return render_template('index.html', items=items, userAdmin=userAdmin)
+            return render_template('index.html', items=items, userAdmin=userAdmin, id='index-page')
 
     # items = conn.execute(query).fetchall()
 
     cursor.close()
     conn.close()
 
-    return render_template('index.html', items=items, userAdmin=userAdmin)
+    return render_template('index.html', items=items, userAdmin=userAdmin, id='index-page')
 
 @app.before_request
 def activityCheck(): #checks for user inactivity, logs them out if no new requests are made within a 10 minute window

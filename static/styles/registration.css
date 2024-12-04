@@ -5,9 +5,9 @@ form {
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
     padding: 20px;
     transition: transform 0.2s;
-    width: 500px; /* Match the width of your login form */
+    width: 500px; 
     text-align: center;
-    margin: 20px auto; /* Centers the form horizontally */
+    margin: 20px auto; 
 }
 
 h1 {
@@ -30,7 +30,7 @@ label {
     margin-top: 10px;
     margin-bottom: 5px;
     text-align: left;
-    color: #BD5C2C; /* Label color */
+    color: #BD5C2C; 
     font-weight: bold;
 }
 
@@ -52,31 +52,31 @@ button {
     border: none;
     color: white;
     cursor: pointer;
-    background-color: #F1B82D; /* Button background color */
+    background-color: #F1B82D; 
     width: 100%;
     font-size: 16px;
 }
 
 button:hover {
-    background-color: #000000; /* Button hover color */
+    background-color: #000000; 
 }
 
 i {
-    display: block; /* Ensures the instruction text is on its own line */
+    display: block; 
     margin-bottom: 15px; 
     font-size: 15px; 
-    color: #000000; /* Color for instructional text */
+    color: #000000; 
 }
 
 p {
-    margin-top: 20px; /* Space above the paragraph */
+    margin-top: 20px; 
     text-align: center;
-    font-size: 16px; /* Adjusts font size for readability */
+    font-size: 16px; 
 }
 
 
 a {
-    color: #1C5E90; /* Link color */
+    color: #1C5E90; 
 }
 
 .input-group {

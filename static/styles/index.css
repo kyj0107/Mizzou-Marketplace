@@ -1,4 +1,4 @@
-.container {
+#index-page .container {
     background-color: #fff;
     padding: 15px;
     width: 90%;
@@ -8,14 +8,14 @@
     box-shadow: 0 4px 10px #000000
 }
 
-h1 {
+#index-page h1 {
     font-weight: bold;
     margin-bottom: 15px;
     text-align: left;
     font-size: 30px;
 }
 
-h2 {
+#index-page h2 {
     color: #000000;
     font-weight: bold;
     margin-top: 30px;
@@ -24,7 +24,7 @@ h2 {
     font-size: 24px;
 }
 
-.card {
+#index-page .card {
     background-color: #fff;
     border: 1px solid #F1B82D;
     border-radius: 10px;
@@ -39,20 +39,20 @@ h2 {
     align-items: center;
 }
 
-.card h3 {
+#index-page .card h3 {
     color: #000000;
     font-weight: bold;
     margin-bottom: 10px;
     font-size: 18px;
 }
 
-.card p {
+#index-page .card p {
     color: #8f8e8e;
     margin-bottom: 10px;
     font-size: 14px;
 }
 
-.card .card-btn {
+#index-page .card .card-btn {
     background-color: #F1B82D;
     color: #fff;
     border: none;
@@ -64,11 +64,11 @@ h2 {
     cursor: pointer;
 }
 
-.card .card-btn:hover {
+#index-page .card .card-btn:hover {
     background-color: #000000;
 }
 
-button {
+#index-page button {
     background-color: #F1B82D;
     color: #fff;
     border: none;
@@ -80,15 +80,15 @@ button {
     cursor: pointer;
 }
 
-button:hover {
+#index-page button:hover {
     background-color: #000000;
 }
 
-button[type="submit"] {
+#index-page button[type="submit"] {
     margin-top: 20px;
 }
 
-form {
+#index-page form {
     text-align: center;
     align-items: center;
     gap: 15px;
@@ -96,7 +96,7 @@ form {
     margin-bottom: 25px;
 }
 
-select {
+#index-page select {
     padding: 10px;
     font-size: 14px;
     border: 1px solid #F1B82D;
@@ -104,7 +104,7 @@ select {
     margin-right: 10px;
 }
 
-.sort {
+#index-page .sort {
     background-color: #F1B82D;
     color: white;
     width: auto;
@@ -115,6 +115,6 @@ select {
     margin-bottom: 25px;
 }
 
-.sort:hover {
+#index-page .sort:hover {
     background-color: #000000;
 }
