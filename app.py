@@ -17,10 +17,10 @@ def get_db_connection():
     try:
 
         mydb = mysql.connector.connect(
-            host="127.0.0.1",
+            host="mizzou-marketplace-db.c9w0g4i2mc6h.us-east-1.rds.amazonaws.com",
             user="root",
             password="root",
-            port="6603",
+            port="3306",
             database="mizzou_marketplace"
         )
         print("Connection was successful!")
