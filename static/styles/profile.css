@@ -1,0 +1,126 @@
+
+.container {
+    background-color: #fff;
+    padding: 15px;
+    width: 90%;
+    max-width: 800px;
+    margin: 5% auto; 
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    font-weight: bold;
+    margin-bottom: 15px;
+    text-align: left;
+    font-size: 30px;
+}
+
+h2 {
+    color: #000000;
+    font-weight: bold;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    text-align: left;
+    font-size: 24px;
+}
+
+h3 {
+    color: #000000;
+    font-weight: bold;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 24px;
+}
+
+.profile {
+    margin-bottom: 10;
+    display: flex;
+    align-items: center;
+}
+
+.profile label {
+    font-size: 16px;
+    color: #BD5C2C;
+    font-weight: bold;
+    margin-right: 5px;
+    width: 20;
+    text-align: left;
+}
+
+.profile span {
+    font-size: 16px;
+    flex: 1;
+    color: #000000;
+    text-align: left;
+}
+
+.card {
+    background-color: #fff;
+    border: 1px solid #F1B82D;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card h3 {
+    color: #000000;
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.card p {
+    color: #8f8e8e;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+.card .card-text strong {
+    color: #BD5C2C;
+}
+
+.card img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    object-fit: cover;
+}
+
+button {
+    background-color: #F1B82D;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    width: 100%;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #000000;
+}
+
+button.card-btn {
+    width: auto;
+    padding: 8px 16px;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+button[type="submit"] {
+    margin-top: 20px;
+}
+
+.no-listings {
+    text-align: center;
+    font-size: 16px;
+    color: #8f8e8e;
+    margin: 0 auto;
+    margin-top: 20px;
+}

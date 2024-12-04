@@ -1,69 +1,70 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/profile.css') }}">
+</head>
 
-<h1>Your Profile</h1>
+<div class="container">
+    <h1>Profile</h1>
 
-<h2>Your Info:</h2>
-<div>
-    <label>First Name:</label>
-    <span>{{ user.firstName }}</span>
-</div>
-<div>
-    <label>Last Initial:</label>
-    <span>{{ user.lastInitial }}</span>
-</div>
-<div>
-    <label>Email:</label>
-    <span>{{ user.email }}</span>
-</div>
+    <h2>Your Info:</h2>
+    <div class="profile">
+        <label>First Name: </label>
+        <span>{{ user.firstName }}</span>
+    </div>
+    <div class="profile">
+        <label>Last Initial: </label>
+        <span>{{ user.lastInitial }}</span>
+    </div>
+    <div class="profile">
+        <label>Email: </label>
+        <span>{{ user.email }}</span>
+    </div>
 
-<h2>Your Listed Items</h2>
-<br>
-{% if listedItems %}
-    {% for item in listedItems %}
-        <div class="card">
-            <img class="card-img-top" src="" alt="Product image unavailable">
-            <h3 class="card-title"><strong>Listing Name:</strong> {{ item['itemName'] }}</h3>
-            <p class="card-text"><strong>Description:</strong> {{ item['itemDescription'] }}</p>
-            <p class="card-text"><strong>Condition:</strong> {{ item['itemCondition'] }}</p>
-            <p class="card-text"><strong>Type:</strong> {{ item['itemType'] }}</p>
-            <p class="card-text"><strong>Price:</strong> ${{ item['price'] }}</p>
-            <p class="card-text"><small class="text-muted">Listed on: {{ item['posted'] }}</small></p>
-            <form action="{{ url_for('unlistItem', item_id=item['itemID']) }}" method="post" onsubmit="return confirmUnlist()">
-                <button type="submit" class=>Unlist Item</button>
-            </form>
-        </div>
-    {% endfor %}
-{% else %}
-    <p>You have no currently listed items.</p>
-{% endif %}
+    <h3>Your Listed Items:</h3>
+    <br>
+    {% if listedItems %}
+        {% for item in listedItems %}
+            <div class="card">
+                <img class="card-img-top" src="" alt="Product image unavailable">
+                <h3 class="card-title"><strong>Listing Name:</strong> {{ item['itemName'] }}</h3>
+                <p class="card-text"><strong>Description:</strong> {{ item['itemDescription'] }}</p>
+                <p class="card-text"><strong>Condition:</strong> {{ item['itemCondition'] }}</p>
+                <p class="card-text"><strong>Type:</strong> {{ item['itemType'] }}</p>
+                <p class="card-text"><strong>Price:</strong> ${{ item['price'] }}</p>
+                <p class="card-text"><small class="text-muted">Listed on: {{ item['posted'] }}</small></p>
+                <form action="{{ url_for('unlistItem', item_id=item['itemID']) }}" method="post" onsubmit="return confirmUnlist()">
+                    <button type="submit" class=>Unlist Item</button>
+                </form>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>You have no currently listed items.</p>
+    {% endif %}
 
-<h2>Your Unlisted Items</h2>
-{% if unlistedItems %}
-    {% for item in unlistedItems %}
-        <div class="card">
-            <img class="card-img-top" src="" alt="Product image unavailable">
-            <h3 class="card-title"><strong>Listing Name:</strong> {{ item['itemName'] }}</h3>
-            <p class="card-text"><strong>Description:</strong> {{ item['itemDescription'] }}</p>
-            <p class="card-text"><strong>Condition:</strong> {{ item['itemCondition'] }}</p>
-            <p class="card-text"><strong>Type:</strong> {{ item['itemType'] }}</p>
-            <p class="card-text"><strong>Price:</strong> ${{ item['price'] }}</p>
-            <p class="card-text"><small class="text-muted">Listed on: {{ item['posted'] }}</small></p>
-        </div>
-    {% endfor %}
-{% else %}
-    <p>You currently have no unlisted items.</p>
-{% endif %}
+    <h3>Your Unlisted Items:</h3>
+    {% if unlistedItems %}
+        {% for item in unlistedItems %}
+            <div class="card">
+                <img class="card-img-top" src="" alt="Product image unavailable">
+                <h4 class="card-title"><strong>Listing Name:</strong> {{ item['itemName'] }}</h4>
+                <p class="card-text"><strong>Description:</strong> {{ item['itemDescription'] }}</p>
+                <p class="card-text"><strong>Condition:</strong> {{ item['itemCondition'] }}</p>
+                <p class="card-text"><strong>Type:</strong> {{ item['itemType'] }}</p>
+                <p class="card-text"><strong>Price:</strong> ${{ item['price'] }}</p>
+                <p class="card-text"><small class="text-muted">Listed on: {{ item['posted'] }}</small></p>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>You currently have no unlisted items.</p>
+    {% endif %}
 
-<div>
-    <button type="submit">Update Profile</button> 
-</div>
-
-<div>
-    <form action="{{ url_for('logout') }}" method="post">
-        <button type="submit">Log Out</button> 
-    </form>
+    <div>
+        <form action="{{ url_for('logout') }}" method="post">
+            <button type="submit">Log Out</button> 
+        </form>
+    </div>
 </div>
 
 <script>
