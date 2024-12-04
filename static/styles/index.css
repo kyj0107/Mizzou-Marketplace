@@ -1,15 +1,120 @@
-.card{
-    width: 400px;
-    margin-left: 10px;
-    padding-left: 10px;
+#index-page .container {
+    background-color: #fff;
+    padding: 15px;
+    width: 90%;
+    max-width: 1000px;
+    margin: 5% auto; 
+    border-radius: 10px;
+    box-shadow: 0 4px 10px #000000
 }
-.card-link{
-    text-decoration: none;
-    color: black;
+
+#index-page h1 {
+    font-weight: bold;
+    margin-bottom: 15px;
+    text-align: left;
+    font-size: 30px;
 }
-.card-btn{
+
+#index-page h2 {
+    color: #000000;
+    font-weight: bold;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    text-align: left;
+    font-size: 24px;
+}
+
+#index-page .card {
+    background-color: #fff;
+    border: 1px solid #F1B82D;
+    border-radius: 10px;
+    padding: 15px;
+    margin: 15px auto;
+    margin-bottom: 15px;
+    max-width: 800px;
+    width: 100%;
+    box-shadow: 0 2px 8px #000000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#index-page .card h3 {
+    color: #000000;
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+#index-page .card p {
+    color: #8f8e8e;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+#index-page .card .card-btn {
     background-color: #F1B82D;
-    border: solid 1px;
-    border-radius: 8px;
-    border-color: black;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    width: 100%;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#index-page .card .card-btn:hover {
+    background-color: #000000;
+}
+
+#index-page button {
+    background-color: #F1B82D;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    width: 100%;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#index-page button:hover {
+    background-color: #000000;
+}
+
+#index-page button[type="submit"] {
+    margin-top: 20px;
+}
+
+#index-page form {
+    text-align: center;
+    align-items: center;
+    gap: 15px;
+    display: flex;
+    margin-bottom: 25px;
+}
+
+#index-page select {
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #F1B82D;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+#index-page .sort {
+    background-color: #F1B82D;
+    color: white;
+    width: auto;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 25px;
+}
+
+#index-page .sort:hover {
+    background-color: #000000;
 }

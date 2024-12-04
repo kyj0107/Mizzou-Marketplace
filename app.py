@@ -52,7 +52,12 @@ def index():
         return render_template('errorPage.html')
     
     cursor = conn.cursor(dictionary=True)
-    query = 'SELECT * FROM items WHERE listed = TRUE'
+
+    cursor.execute("SELECT admin FROM users WHERE userID = %s", (session['user_id'],)) #checks user's admin value and sets userAdmin variable as needed
+    user = cursor.fetchone()
+    userAdmin = user['admin'] if user else False
+
+    query = 'SELECT items.*, users.firstName AS sellerFirstName, users.lastInitial AS sellerLastInitial, users.email AS sellerEmail FROM items JOIN users ON items.userID = users.userID WHERE items.listed = TRUE' #updated query now also gets seller info for the listing
     cursor.execute(query)
     items = cursor.fetchall()
     
@@ -62,7 +67,7 @@ def index():
         sortBy = request.form['sort']
 
         if sortBy == "":
-            query = 'SELECT * FROM items WHERE listed = TRUE'
+            query = 'SELECT items.*, users.firstName AS sellerFirstName, users.lastInitial AS sellerLastInitial, users.email AS sellerEmail FROM items JOIN users ON items.userID = users.userID WHERE items.listed = TRUE' 
             cursor.execute(query)
             items = cursor.fetchall()
             flash("Showing everything.")
@@ -72,14 +77,14 @@ def index():
             cursor.execute(query)
             items = cursor.fetchall()
             flash(f"Showing {sortBy}.")
-            return render_template('index.html', items=items)
+            return render_template('index.html', items=items, userAdmin=userAdmin, id='index-page')
 
     # items = conn.execute(query).fetchall()
 
     cursor.close()
     conn.close()
 
-    return render_template('index.html', items=items)
+    return render_template('index.html', items=items, userAdmin=userAdmin, id='index-page')
 
 @app.before_request
 def activityCheck(): #checks for user inactivity, logs them out if no new requests are made within a 10 minute window
@@ -330,7 +335,15 @@ def unlistItem(item_id):
 
     cursor = conn.cursor(dictionary=True) 
     try:
-        cursor.execute("UPDATE items SET listed = FALSE WHERE itemID = %s AND userID = %s", (item_id, session['user_id']))
+        cursor.execute("SELECT admin FROM users WHERE userID = %s", (session['user_id'],)) #checks user's admin value and sets userAdmin variable as needed
+        user = cursor.fetchone()
+        userAdmin = user['admin'] if user else False
+
+        if userAdmin:
+            cursor.execute("UPDATE items SET listed = FALSE WHERE itemID = %s", (item_id,)) #if user is admin this lets them unlist the item regardless of userID
+        else:
+            cursor.execute("UPDATE items SET listed = FALSE WHERE itemID = %s AND userID = %s", (item_id, session['user_id']))
+        
         conn.commit()
 
         if cursor.rowcount == 0:
