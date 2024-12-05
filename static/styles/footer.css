@@ -1,4 +1,4 @@
-.footer{
+.footer {
     font-family: 'Times New Roman', Times, serif;
     display: flex;
     background-color: #F1B82D;
@@ -6,23 +6,23 @@
     justify-content: space-between;
     border-top: 1px solid black;
     margin-top: 50px;
-    align-items: center;
-    position: fixed;
     width: 100%;
     bottom: 0;
+    flex-wrap: wrap;
+    flex-direction: row;
 }
+
 .footeritems{
     font-size: 18px;
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
     align-items: center;
     text-align: center;
     padding-right: 100px;
+    gap: 24px;
 }
-#footerimage{
-    width: 100%;
-    height: 100%;
-}
+
 .footeritems a{
     text-decoration: none;
     display: flex;
@@ -37,8 +37,13 @@
 .footeritems a:visited{
     color: black;
 }
+
 #munavbarlink{
     padding-right: 60px;
     width: 50%;
     height: 50%;
+}
+
+@media screen and (max-width: 700px) {
+
 }

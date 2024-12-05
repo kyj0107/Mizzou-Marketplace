@@ -3,6 +3,7 @@
 <head>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/main.css') }}">
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{% block title %} {% endblock %} - Mizzou Marketplace</title>
     <style>
         .item {
@@ -14,16 +15,14 @@
 </head>
 <body id="{{ id }}">
     <nav class="headernav">
-        <div>
-            <a href="{{ url_for('index') }}"><img id="websitelogo"src="/static/Images/logo.png"></a>
+        <a href="{{ url_for('index') }}"><img id="websitelogo"src="/static/Images/logo.png"></a>
+        <div class="navdiv">
             <a href="{{ url_for('about') }}"><img id="navimage"src="/static/Images/aboutnav.png"></a>
             <a href="{{ url_for('itemEntry') }}"><img id="navimage"src="/static/Images/postitemnav.png"></a>
-            <a href ="{{ url_for ('product') }}"><img id="productnavimage"src="/static/Images/productsnav.png"></a>
-        </div>
-        <div class="account">
+            <!--commented below out for deployment-->
+            <!-- <a href ="{{ url_for ('product') }}"><img id="productnavimage"src="/static/Images/productsnav.png"></a> -->
             <a href="{{ url_for('login') }}"><img id="navimage"src="/static/Images/loginnav.png"></a>
             <a href ="{{ url_for('register') }}"><img id="navimage"src="/static/Images/registernav.png"></a>
-
         </div>
     </nav>
     <hr>
@@ -44,6 +43,7 @@
             <a href="{{ url_for('index') }}">Home</a>
             <a href="{{ url_for('policy') }}">Policy</a>
             <a href="{{ url_for('faq') }}">FAQ</a>
+            <a href="{{ url_for('support') }}">Support</a>
         </div>
     </div>
 </body>
