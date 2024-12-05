@@ -16,6 +16,8 @@ app.config['INACTIVITY_TIMEOUT'] = 600
 def get_db_connection():
     try:
 
+        #comment this block out if you want to run locally
+        '''
         mydb = mysql.connector.connect(
             host="mizzou-marketplace-db.c9w0g4i2mc6h.us-east-1.rds.amazonaws.com",
             user="admin",
@@ -23,8 +25,21 @@ def get_db_connection():
             port="3306",
             database="mizzou_marketplace"
         )
+        '''
+
+        #comment this block out for deploying
+    
+        mydb = mysql.connector.connect(
+            host="127.0.0.1",
+            user="root",
+            password="root",
+            port="6603",
+            database="mizzou_marketplace"
+        )
         print("Connection was successful!")
         return mydb
+
+    
 
     except Exception as err:
 
@@ -382,4 +397,4 @@ def support():
     return render_template('support.html')
     
 #dont need when using aws
-#app.run(host='0.0.0.0', port=80, debug=True)
+app.run(host='0.0.0.0', port=80, debug=True)
