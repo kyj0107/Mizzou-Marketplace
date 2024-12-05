@@ -15,7 +15,6 @@ app.config['INACTIVITY_TIMEOUT'] = 600
 
 def get_db_connection():
     try:
-
         #comment this block out if you want to run locally
         '''
         mydb = mysql.connector.connect(
@@ -28,9 +27,8 @@ def get_db_connection():
         '''
 
         #comment this block out for deploying
-    
         mydb = mysql.connector.connect(
-            host="127.0.0.1",
+            host="localhost",
             user="root",
             password="root",
             port="6603",
@@ -38,8 +36,6 @@ def get_db_connection():
         )
         print("Connection was successful!")
         return mydb
-
-    
 
     except Exception as err:
 
