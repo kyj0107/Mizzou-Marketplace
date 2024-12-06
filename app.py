@@ -82,7 +82,7 @@ def index():
             cursor.execute(query)
             items = cursor.fetchall()
             flash("Showing everything.")
-            return render_template('index.html', items=items)
+            return render_template('index.html', items=items, id='index-page')
         if sortBy == "furniture" or sortBy == "textbooks" or sortBy == "supplies" or sortBy == "clothing":
             query = f"SELECT items.*, users.firstName AS sellerFirstName, users.lastInitial AS sellerLastInitial, users.email AS sellerEmail FROM items JOIN users ON items.userID = users.userID WHERE items.itemType = '{sortBy.capitalize()}' AND items.listed = TRUE"
             cursor.execute(query)
