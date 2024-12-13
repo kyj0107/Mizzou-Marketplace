@@ -20,7 +20,7 @@ def get_db_connection():
         mydb = mysql.connector.connect(
             host="mizzou-marketplace-db.c9w0g4i2mc6h.us-east-1.rds.amazonaws.com",
             user="admin",
-            password="GDYS>I>TXz-?42o_zNv+3SAi_g_+",
+            password="]br0C538[Kt#3{mZwJz#journ4O|",
             port="3306",
             database="mizzou_marketplace"
         )
